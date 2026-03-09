@@ -1,0 +1,23 @@
+{# overrides/main.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 只在首页显示英雄区域 -->
+{% if page.is_homepage %}
+<div class="mdx-hero">
+  <div class="mdx-hero__content">
+    <h1>你的网站标题</h1>
+    <p>一句简洁有力的描述或标语。</p>
+    <a href="#快速开始" class="md-button md-button--primary">
+      立刻开始
+    </a>
+    <a href="about.md" class="md-button">
+      了解更多
+    </a>
+  </div>
+</div>
+{% endif %}
+
+<!-- 这里是页面原有的 Markdown 内容（来自 index.md 或其他文章） -->
+{{ super() }}
+{% endblock %}

@@ -1,16 +1,52 @@
+# 网站名称，会显示在浏览器标签和页面左上角
 site_name: My Documentation Site
+# 主题配置
 theme:
-  name: material
+  name: material # 使用 Material for MkDocs 主题
+  # custom_dir: overrides # 指定自定义模板目录
+
+  # 亮暗色模式切换配置（调色板）
+  palette:
+    # 浅色模式方案
+    - scheme: default          # 默认浅色配色方案
+      primary: indigo          # 主色调为靛蓝色
+      accent: indigo           # 强调色（如链接、按钮）为靛蓝色
+      toggle:
+        icon: material/brightness-7   # 浅色模式下显示的图标（太阳）
+        name: Switch to dark mode     # 鼠标悬停时显示的提示文字
+    # 深色模式方案
+    - scheme: slate            # 深色配色方案
+      primary: indigo          # 主色调
+      accent: indigo
+      toggle:
+        icon: material/brightness-4   # 深色模式下显示的图标（月亮）
+        name: Switch to light mode    # 点击后切换到浅色模式
+
+  # 主题功能特性列表
   features:
-    - navigation.tabs
-    - navigation.top
+    - navigation.tabs          # 启用顶部选项卡式导航（位于页面顶端）
+    - navigation.top           # 添加“返回顶部”按钮，滚动到一定位置后出现
+    - search.highlight         # 搜索结果中高亮显示匹配的关键词
+  # 图标配置
   icon:
-    logo: material/dog
+    logo: material/github         # 网站 Logo 使用 Material 图标库中的 GitHub 图标
+
   language: zh
-  features:
-    - navigation.top #返回顶部按钮
-    - navigation.tabs #选项卡
-    - navigation.sidebar #侧边栏
-    - search.highlight #搜索高亮
+# 版权信息，显示在页面底部
 copyright: copyright@shengwenqiang
-  
+
+markdown_extensions:
+  - attr_list  # 允许为Markdown元素添加属性，比如给图片加CSS类名
+  - md_in_html # 允许在HTML块中使用Markdown语法
+extra_css:
+  - extra.css ##不需要添加前置目录，自动指向overrides目录
+
+# 导航栏配置
+# 定义网站的页面结构和导航顺序
+nav:
+  - Home: index.md
+  - 机械设计: 
+    - 未来方向: 机械/未来方向.md
+    - 三维建模: 机械/SolidWorks.md
+  - PLC: PLC/PLC学习笔记.md
+  - 杂七杂八: 杂七杂八/mkdocs笔记.md

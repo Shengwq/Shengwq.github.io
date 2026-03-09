@@ -1,0 +1,61 @@
+/* ---------- 全局英雄区域样式（无需限定，因为英雄区域只在首页生成） ---------- */
+.mdx-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./img/earth.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin: 0;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.mdx-hero__content {
+  max-width: 800px;
+  padding: 20px;
+  z-index: 2;
+}
+
+.mdx-hero h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.mdx-hero p {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  opacity: 0.95;
+}
+
+.mdx-hero .md-button {
+  margin: 10px;
+  font-size: 1.2em;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ---------- 仅对首页生效的布局调整 ---------- */
+body[data-md-url="/"] .md-main__inner {
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+body[data-md-url="/"] .md-content {
+  padding: 0 !important;
+}
+
+body[data-md-url="/"] .md-main {
+  background-color: transparent;
+}
+
+body[data-md-url="/"] .md-sidebar--primary,
+body[data-md-url="/"] .md-sidebar--secondary {
+  display: none;
+}
