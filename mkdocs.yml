@@ -4,3 +4,13 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
+  icon:
+    logo: material/dog
+  language: zh
+  features:
+    - navigation.top #返回顶部按钮
+    - navigation.tabs #选项卡
+    - navigation.sidebar #侧边栏
+    - search.highlight #搜索高亮
+copyright: copyright@shengwenqiang
+  
