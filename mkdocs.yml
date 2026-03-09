@@ -1,0 +1,6 @@
+site_name: My Documentation Site
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.top
