@@ -29,7 +29,7 @@ theme:
         name: Switch to dark mode     # 鼠标悬停时显示的提示文字
     # 深色方案
     - scheme: slate            # 深色
-      primary: blue-grey          # 主色调
+      primary: black         # 主色调
       accent: cyan
       toggle:
         icon: material/brightness-4   # 深色模式下显示的图标（月亮）
