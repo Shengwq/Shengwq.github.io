@@ -1,61 +1,103 @@
-/* ---------- 全局英雄区域样式（无需限定，因为英雄区域只在首页生成） ---------- */
+/* ===== Hero 全屏区域 ===== */
 .mdx-hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./img/earth.jpg');
-  background-size: cover;
-  background-position: center;
+  position: relative;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  margin: 0;
-  position: relative;
-  background-attachment: fixed;
 }
 
+/* 视频背景 */
+.mdx-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Lottie 动画（全屏铺满） */
+.mdx-hero__lottie {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* 渐变遮罩，让文字更易读 */
+.mdx-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(63, 81, 181, 0.65) 0%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  z-index: 1;
+}
+
+/* 文字内容区 */
 .mdx-hero__content {
-  max-width: 800px;
-  padding: 20px;
+  position: relative;
   z-index: 2;
+  max-width: 900px;
+  padding: 20px;
+  animation: heroFadeIn 1.2s ease-out both;
 }
 
-.mdx-hero h1 {
-  font-size: 3.5em;
-  margin-bottom: 20px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+/* 标题 */
+.mdx-hero__title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  color: white !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  margin-bottom: 16px;
 }
 
-.mdx-hero p {
-  font-size: 1.5em;
+/* 副标题 */
+.mdx-hero__tagline {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  opacity: 0.92;
   margin-bottom: 40px;
-  opacity: 0.95;
+  letter-spacing: 0.03em;
 }
 
-.mdx-hero .md-button {
-  margin: 10px;
-  font-size: 1.2em;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+/* 按钮组 */
+.mdx-hero__buttons .md-button {
+  margin: 8px;
+  font-size: 1.05rem;
+  padding: 0.6em 1.8em;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mdx-hero__buttons .md-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ---------- 仅对首页生效的布局调整 ---------- */
-body[data-md-url="/"] .md-main__inner {
-  margin: 0 !important;
-  max-width: 100% !important;
+/* 淡入动画 */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-body[data-md-url="/"] .md-content {
-  padding: 0 !important;
+/* ===== 首页布局修正（去掉多余 padding/margin） ===== */
+[data-md-url="/"] .md-main__inner,
+[data-md-color-scheme] .md-main__inner {
+  margin: 0;
 }
 
-body[data-md-url="/"] .md-main {
-  background-color: transparent;
+body .md-content {
+  padding-top: 0 !important;
 }
 
-body[data-md-url="/"] .md-sidebar--primary,
-body[data-md-url="/"] .md-sidebar--secondary {
-  display: none;
+.md-main__inner {
+  margin-top: 0 !important;
 }

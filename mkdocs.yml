@@ -3,7 +3,7 @@ site_name: My Documentation Site
 # 主题配置
 theme:
   name: material # 使用 Material for MkDocs 主题
-  # custom_dir: overrides # 指定自定义模板目录
+  custom_dir: overrides # 指定自定义模板目录
 
   # 亮暗色模式切换配置（调色板）
   palette:
@@ -33,7 +33,9 @@ theme:
 
   language: zh
 # 版权信息，显示在页面底部
-copyright: copyright@shengwenqiang
+# copyright: copyright © 2026 ShengWenQiang. All rights reserved.
+copyright: Copyright &copy; 2026 Sheng
+
 
 markdown_extensions:
   - attr_list  # 允许为Markdown元素添加属性，比如给图片加CSS类名
