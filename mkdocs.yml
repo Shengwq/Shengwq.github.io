@@ -49,8 +49,13 @@ extra_javascript:
 # 定义网站的页面结构和导航顺序
 nav:
   - Home: index.md
-  - 机械设计: 
-    - 未来方向: 机械/未来方向.md
-    - 三维建模: 机械/SolidWorks.md
-  - PLC: PLC/PLC学习笔记.md
-  - 杂七杂八: 杂七杂八/mkdocs笔记.md
+  - 技术笔记:
+    - 机械设计: 
+      - 未来方向: 机械/未来方向.md
+      - 三维建模: 机械/SolidWorks.md
+    - PLC: PLC/PLC学习笔记.md
+    - 杂七杂八: 杂七杂八/mkdocs笔记.md
+  - 思考: 
+    - “乖孩子”误区: 思考/乖孩子误区.md
+    - 关于花钱: 思考/关于花钱.md
+  - About: about/关于本站.md

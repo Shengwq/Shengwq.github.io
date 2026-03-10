@@ -172,3 +172,12 @@ body.homepage .hero-section p {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* 飘落粒子 Canvas 层 */
+#canvas_falling {
+  display: none;              /* 默认隐藏，仅首页显示 */
+}
+
+body.homepage #canvas_falling {
+  display: block;
+}
