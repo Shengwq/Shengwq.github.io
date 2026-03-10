@@ -1,31 +1,10 @@
-{# overrides/main.html #}
 {% extends "base.html" %}
 
-{% block content %}
-{% if page.is_homepage %}
-
-<div class="mdx-hero">
-  <!-- 方式A：视频背景动图（推荐，流畅且体积小） -->
-  <video class="mdx-hero__video" autoplay muted loop playsinline>
-    <source src="assets/hero.webm" type="video/webm">
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
-
-  <!-- 渐变遮罩 -->
-  <div class="mdx-hero__overlay"></div>
-
-  <!-- 文字内容 -->
-  <div class="mdx-hero__content">
-    <h1 class="mdx-hero__title">欢迎来到我的知识库</h1>
-    <p class="mdx-hero__tagline">记录机械设计 · PLC · 工程技术的成长旅程</p>
-    <div class="mdx-hero__buttons">
-      <a href="机械/未来方向/" class="md-button md-button--primary">开始探索</a>
-      <a href="杂七杂八/mkdocs笔记/" class="md-button">关于本站</a>
-    </div>
-  </div>
-</div>
-
-{% endif %}
-
-{{ super() }}
+{% block hero %}
+  {{ super() }}
+  {% if page and page.meta and page.meta.home %}
+    <script>
+      document.body.classList.add('homepage');
+    </script>
+  {% endif %}
 {% endblock %}
