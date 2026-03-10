@@ -1,0 +1,174 @@
+/* ==============================================
+   首页全屏背景图（含顶部栏透明化）
+   与 foorgange 完全相同的实现策略
+   ============================================== */
+
+/* ① body 首页：以背景图铺满全屏 */
+body.homepage {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 视差滚动效果 */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+/* 亮色模式背景图 */
+body.homepage[data-md-color-scheme="default"] {
+  background-image: url("../img/hero-bg.jpg");
+}
+
+/* 暗色模式背景图（可以放同一张，或换一张夜晚风格的） */
+body.homepage[data-md-color-scheme="slate"] {
+  background-image: url("../img/hero-bg.jpg");
+  /* 建议夜间模式换一张深色系图片：
+  background-image: url("../img/hero-bg-dark.jpg"); */
+}
+
+/* ② header 透明化（仍在文档流，功能完全保留） */
+body.homepage .md-header {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  z-index: 10;
+}
+
+/* ③ tabs 导航栏透明 */
+body.homepage .md-tabs {
+  background-color: transparent !important;
+}
+
+/* ④ header 内所有文字 / 图标 → 白色（保证在图片上可读） */
+body.homepage .md-header .md-header__topic .md-ellipsis,
+body.homepage .md-header .md-nav__link,
+body.homepage .md-header .md-tabs__link,
+body.homepage .md-tabs .md-tabs__link,
+body.homepage .md-header .md-social__link svg,
+body.homepage .md-header [data-md-component="palette"] .md-icon svg,
+body.homepage .md-header .md-search__icon svg {
+  color: white !important;
+  fill: white !important;
+  text-shadow: 0 0 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.4);
+}
+
+body.homepage .md-header .md-search__input {
+  color: white !important;
+}
+body.homepage .md-search__input::placeholder {
+  color: rgba(255,255,255,0.65) !important;
+}
+
+/* ⑤ main / content 区域透明，透出 body 背景图 */
+body.homepage .md-main__inner {
+  background-color: transparent !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+body.homepage .md-main {
+  margin-top: 0;
+}
+body.homepage .md-content {
+  background-color: transparent !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+/* ⑥ Hero 文字区：垂直居中浮在图片上 */
+body.homepage .hero-section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 7rem);
+  text-align: center;
+  padding: 2rem;
+  animation: heroFadeIn 1s ease-out both;
+}
+
+/* 标题 */
+body.homepage .hero-section h1 {
+  font-size: clamp(2rem, 5vw, 3.8rem) !important;
+  font-weight: 900;
+  /* 白色文字 + 深色描边，在各种背景图上都清晰 */
+  color: white !important;
+  text-shadow:
+    2px 2px 0 rgba(0,0,0,0.5),
+    0 4px 24px rgba(0,0,0,0.4);
+  margin-bottom: 0.4em;
+  letter-spacing: 0.06em;
+}
+
+/* 副标题 */
+body.homepage .hero-section p {
+  font-size: clamp(1rem, 2.2vw, 1.35rem) !important;
+  color: rgba(255,255,255,0.92) !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  letter-spacing: 0.04em;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  min-height: 2em;
+}
+
+/* ⑦ 按钮 */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 0.65em 2.2em;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.15), 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.hero-btn--primary {
+  background: rgba(63, 81, 181, 0.92);
+  color: white !important;
+  border: 2px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(6px);
+}
+
+.hero-btn:not(.hero-btn--primary) {
+  background: rgba(255,255,255,0.18);
+  color: white !important;
+  border: 2px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(6px);
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.12), 0 16px 32px rgba(0,0,0,0.25);
+}
+
+/* ⑧ 打字机光标 */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: white;
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ⑨ 入场淡入动画 */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
