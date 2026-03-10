@@ -43,7 +43,7 @@ theme:
   # 图标配置
   icon:
     logo: material/github         # 网站 Logo 使用 Material 图标库中的 GitHub 图标
-
+  favicon: img/favicon.jpg 
   language: zh
 
 markdown_extensions:
