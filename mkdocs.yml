@@ -39,7 +39,9 @@ theme:
   features:
     - navigation.tabs          # 启用顶部选项卡式导航（位于页面顶端）
     - navigation.top           # 添加“返回顶部”按钮，滚动到一定位置后出现
+    - navigation.indexes       # 允许目录本身有 index 页
     - search.highlight         # 搜索结果中高亮显示匹配的关键词
+
   # 图标配置
   icon:
     logo: material/github         # 网站 Logo 使用 Material 图标库中的 GitHub 图标
@@ -52,19 +54,23 @@ markdown_extensions:
 extra_css:
   - extra.css ##不需要添加前置目录，自动指向overrides目录
 extra_javascript:
-  - js/falling.js   # ← 新增这一行
+  - js/falling.js   #落叶
   
 # 导航栏配置
 # 定义网站的页面结构和导航顺序
 nav:
   - Home: index.md
   - 技术笔记:
+    - 概览: 学习笔记/index.md
     - 机械设计: 
-      - 未来方向: 机械/未来方向.md
-      - 三维建模: 机械/SolidWorks.md
-    - PLC: PLC/PLC学习笔记.md
-    - 杂七杂八: 杂七杂八/mkdocs笔记.md
+      - 未来方向: 学习笔记/机械/未来方向.md
+      - 三维建模: 学习笔记/机械/SolidWorks.md
+    - PLC: 学习笔记/PLC/PLC学习笔记.md
+    - 杂七杂八: 学习笔记/杂七杂八/mkdocs笔记.md
   - 思考: 
+    - 概览: 思考/index.md
     - “乖孩子”误区: 思考/乖孩子误区.md
     - 关于花钱: 思考/关于花钱.md
-  - About: about/关于本站.md
+  - About: 
+    - 关于本站: about/关于本站.md
+    - 更新日志: about/更新日志.md
