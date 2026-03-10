@@ -1,23 +1,36 @@
-# 网站名称，会显示在浏览器标签和页面左上角
-site_name: My Documentation Site
+# 网站主要配置
+site_name: 追光小站        # 网站标题，显示在浏览器标签页和导航栏
+site_author: Sheng            # 网站作者，用于元数据
+site_url: https://shengwq.github.io/ # 网站的 canonical URL，用于 SEO 和社交分享
+site_description: Sheng的个人网站 # 网站描述，用于搜索引擎元数据
+
+# 代码仓库信息 (可选，用于在网站上显示仓库链接)
+repo_url: https://github.com/Shengwq/Shengwq.github.io.git # 仓库的 URL
+repo_name: My-repo        # 在网站上显示的仓库名称
+
+# 版权信息，显示在页面底部
+# copyright: copyright © 2026 ShengWenQiang. All rights reserved.
+copyright: Copyright &copy; 2026 Sheng
+
 # 主题配置
 theme:
   name: material # 使用 Material for MkDocs 主题
   custom_dir: overrides # 指定自定义模板目录
 
   # 亮暗色模式切换配置（调色板）
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/?h=colo
   palette:
-    # 浅色模式方案
-    - scheme: default          # 默认浅色配色方案
-      primary: indigo          # 主色调为靛蓝色
-      accent: indigo           # 强调色（如链接、按钮）为靛蓝色
+    # 浅色方案
+    - scheme: default          # 浅色
+      primary: white          # 主色调
+      accent: indigo           # 强调色（如链接、按钮）
       toggle:
         icon: material/brightness-7   # 浅色模式下显示的图标（太阳）
         name: Switch to dark mode     # 鼠标悬停时显示的提示文字
-    # 深色模式方案
-    - scheme: slate            # 深色配色方案
-      primary: indigo          # 主色调
-      accent: indigo
+    # 深色方案
+    - scheme: slate            # 深色
+      primary: blue-grey          # 主色调
+      accent: cyan
       toggle:
         icon: material/brightness-4   # 深色模式下显示的图标（月亮）
         name: Switch to light mode    # 点击后切换到浅色模式
@@ -32,10 +45,6 @@ theme:
     logo: material/github         # 网站 Logo 使用 Material 图标库中的 GitHub 图标
 
   language: zh
-# 版权信息，显示在页面底部
-# copyright: copyright © 2026 ShengWenQiang. All rights reserved.
-copyright: Copyright &copy; 2026 Sheng
-
 
 markdown_extensions:
   - attr_list  # 允许为Markdown元素添加属性，比如给图片加CSS类名
