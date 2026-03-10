@@ -18,7 +18,7 @@ body.homepage {
 
 /* 亮色模式背景图 */
 body.homepage[data-md-color-scheme="default"] {
-  background-image: url("../img/hero-bg.jpg");
+  background-image: url("../img/day.jpg");
 }
 
 /* 暗色模式背景图（可以放同一张，或换一张夜晚风格的） */

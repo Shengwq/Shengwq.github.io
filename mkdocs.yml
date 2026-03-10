@@ -42,7 +42,9 @@ markdown_extensions:
   - md_in_html # 允许在HTML块中使用Markdown语法
 extra_css:
   - extra.css ##不需要添加前置目录，自动指向overrides目录
-
+extra_javascript:
+  - js/falling.js   # ← 新增这一行
+  
 # 导航栏配置
 # 定义网站的页面结构和导航顺序
 nav:
