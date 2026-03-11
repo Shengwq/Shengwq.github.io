@@ -209,7 +209,66 @@
     <div class="md-container" data-md-component="container">
       
   
+
+  <!-- 全局黑胶唱片播放器 -->
+  <div id="vinyl-player" class="vinyl-player-instance">
+    <div id="vinyl-disk" class="vinyl-disk"></div>
+    <div id="play-btn" class="play-pause-btn paused"></div>
+  </div>
+
+  <!-- 隐藏的音频元素，loop 循环播放 -->
+  <audio id="bgm" loop>
+    <source src="../../../audio/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio   = document.getElementById('bgm');
+      const btn     = document.getElementById('play-btn');
+      const disk    = document.getElementById('vinyl-disk');
+
+      // ── 状态恢复：翻页后记住是否在播放 ──────────────────────
+      if (localStorage.getItem('bgm_playing') === 'true') {
+        audio.play().then(() => {
+          btn.classList.replace('paused', 'playing');
+          disk.style.animationPlayState = 'running';
+        }).catch(() => {
+          // 浏览器自动播放策略阻止时静默失败
+          localStorage.setItem('bgm_playing', 'false');
+        });
+      }
+
+      // ── 点击切换播放/暂停 ────────────────────────────────────
+      btn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play().then(() => {
+            btn.classList.replace('paused', 'playing');
+            disk.style.animationPlayState = 'running';
+            localStorage.setItem('bgm_playing', 'true');
+          }).catch(err => console.warn('播放失败:', err));
+        } else {
+          audio.pause();
+          btn.classList.replace('playing', 'paused');
+          disk.style.animationPlayState = 'paused';
+          localStorage.setItem('bgm_playing', 'false');
+        }
+      });
+
+      // ── 音频事件同步状态 ─────────────���───────────────────────
+      audio.addEventListener('play',  () => {
+        btn.classList.replace('paused', 'playing');
+        disk.style.animationPlayState = 'running';
+      });
+      audio.addEventListener('pause', () => {
+        btn.classList.replace('playing', 'paused');
+        disk.style.animationPlayState = 'paused';
+      });
+    });
+  </script>
+
   
+  
+
 
       
         

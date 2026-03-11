@@ -181,3 +181,113 @@ body.homepage .hero-section p {
 body.homepage #canvas_falling {
   display: block;
 }
+
+/* ================================================
+   黑胶唱片音乐播放器
+   固定在页面左下角，全站显示
+   ================================================ */
+
+/* 播放器容器：固定定位在左下角 */
+.vinyl-player-instance {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 80px;
+  height: 80px;
+  z-index: 9999;
+  /* 入场动画 */
+  animation: playerFadeIn 1s ease-out 0.5s both;
+}
+
+@keyframes playerFadeIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+
+/* 黑胶唱片主体：圆形封面图，持续旋转 */
+.vinyl-disk {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: url("img/cover.jpg");  /* 封面图路径 */
+  background-size: cover;
+  background-position: center;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.15),
+    0 4px 20px rgba(0,0,0,0.4);
+  /* 旋转动画，默认暂停 */
+  animation: vinylSpin 8s linear infinite;
+  animation-play-state: paused;
+  /* 中心小孔 */
+  background-repeat: no-repeat;
+}
+
+/* 中心小孔（用 ::after 伪元素实现） */
+.vinyl-disk::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+
+@keyframes vinylSpin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* 播放/暂停按钮：覆盖在唱片中心，默认透明 */
+.play-pause-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(255,255,255,0.9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  /* 默认半透明，hover 时显现 */
+  opacity: 0.6;
+  transition: opacity 0.25s ease, transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+}
+
+.play-pause-btn:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.8);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* 播放图标 ▶ */
+.play-pause-btn.paused::before {
+  content: "▶";
+  color: white;
+  font-size: 12px;
+  margin-left: 2px; /* 视觉居中微调 */
+  line-height: 1;
+}
+
+/* 暂停图标 ‖ */
+.play-pause-btn.playing::before {
+  content: "⏸";
+  color: white;
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* 播放中：唱片边框发光效果 */
+.vinyl-player-instance:has(.playing) .vinyl-disk {
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.3),
+    0 0 18px rgba(99, 179, 237, 0.6),
+    0 4px 20px rgba(0,0,0,0.4);
+}
