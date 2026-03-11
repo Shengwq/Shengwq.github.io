@@ -66,6 +66,7 @@ nav:
       - 未来方向: 学习笔记/机械/未来方向.md
       - 三维建模: 学习笔记/机械/SolidWorks.md
     - PLC: 学习笔记/PLC/PLC学习笔记.md
+    - 嵌入式: 学习笔记/嵌入式/FreeRTOS入门培训.md
     - 杂七杂八: 学习笔记/杂七杂八/mkdocs笔记.md
   - 思考: 
     - 概览: 思考/index.md
