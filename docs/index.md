@@ -10,7 +10,7 @@ home: true
   <p id="typing-effect"></p>
   <div class="hero-buttons">
     <a href="学习笔记/机械/未来方向" class="hero-btn hero-btn--primary">开始探索 →</a>
-    <a href="About/关于本站/" class="hero-btn">关于本站</a>
+    <a href="about/关于本站/" class="hero-btn">关于本站</a>
   </div>
 </div>
 
