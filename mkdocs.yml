@@ -41,16 +41,25 @@ theme:
     - navigation.top           # 添加“返回顶部”按钮，滚动到一定位置后出现
     - navigation.indexes       # 允许目录本身有 index 页
     - search.highlight         # 搜索结果中高亮显示匹配的关键词
-
+    - content.code.copy        # 代码块右上角添加复制按钮
   # 图标配置
   icon:
     logo: material/github         # 网站 Logo 使用 Material 图标库中的 GitHub 图标
   favicon: img/favicon.jpg 
   language: zh
 
+#markdown扩展
 markdown_extensions:
   - attr_list  # 允许为Markdown元素添加属性，比如给图片加CSS类名
   - md_in_html # 允许在HTML块中使用Markdown语法
+  - tables                   # ← 确保表格正常渲染
+  - pymdownx.superfences     # ← 核心修复：解决缩进代码块问题
+  - pymdownx.highlight:      # ← 语法高亮
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite    # ← 行内代码高亮  
+
 extra_css:
   - extra.css ##不需要添加前置目录，自动指向overrides目录
 extra_javascript:
