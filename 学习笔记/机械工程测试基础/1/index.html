@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#1" class="md-skip">
           跳转至
         </a>
       
@@ -705,6 +705,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -747,6 +749,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -755,24 +759,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么要傅里叶变换：
+        2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        傅里叶变换后函数的意义：
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1205,6 +1232,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1213,24 +1242,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么要傅里叶变换：
+        2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        傅里叶变换后函数的意义：
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1254,58 +1306,10 @@
   
 
 
-  <h1>机工测</h1>
-
-<h4 id="_1">为什么要傅里叶变换：</h4>
-<p>傅里叶变换的核心目的是<strong>把信号从 “时域” 转换到 “频域”</strong>，让我们能从另一个角度分析信号的本质，解决时域里难以处理的问题。</p>
-<ol>
-<li>
-<p>更直观地分析信号的频率成分</p>
-</li>
-<li>
-<p><strong>时域里我们只能看到信号随时间的变化（比如声音的波形、电压的波动），但看不到它包含哪些频率。</strong></p>
-</li>
-<li>
-<p><strong>傅里叶变换后，我们能直接看到信号的 “频谱”—— 比如音乐里的高音、低音分别占多少比例，或者电路里的噪声是哪个频率的干扰。</strong></p>
-</li>
-<li>
-<p>简化复杂运算</p>
-</li>
-<li>
-<p>在时域里做<strong>卷积</strong>（比如滤波、系统响应）非常繁琐，但在频域里卷积会变成简单的<strong>乘法</strong>，大幅降低计算量。</p>
-</li>
-<li>
-<p>对于线性时不变系统，频域分析可以直接用 “频率响应” 来描述系统对不同频率信号的处理效果，让系统设计和分析更高效。</p>
-</li>
-<li>
-<p>解决特定领域的问题</p>
-</li>
-<li>
-<p><strong>通信领域</strong>：通过傅里叶变换可以实现信号的调制、解调、滤波，让信号能在信道中高效传输。</p>
-</li>
-<li><strong>图像处理</strong>：傅里叶变换可以把图像从空间域转换到频率域，方便进行去噪、压缩、边缘检测等操作。</li>
-<li><strong>振动分析</strong>：可以找出机械结构的共振频率，避免因共振导致的损坏。</li>
-</ol>
-<h4 id="_2">傅里叶变换后函数的意义：</h4>
-<p>傅里叶变换后得到的函数（通常记为 <strong>F(ω) 或 F(f)</strong>），被称为<strong>频谱函数</strong>或<strong>频域表示</strong>，它的意义可以从三个核心维度来理解：</p>
-<ol>
-<li>
-<p>物理意义：信号的 “频率成分说明书”</p>
-</li>
-<li>
-<p><strong>幅度谱</strong>：∣F(ω)∣表示信号中对应频率 ω的成分的振幅大小。</p>
-</li>
-<li>
-<p><strong>相位谱</strong>：∠F(ω) 表示对应频率成分的<strong>相位偏移</strong>，它决定了这些频率成分在时域叠加时的波形形状。</p>
-</li>
-<li>
-<p>数学意义：时域与频域的 “桥梁”</p>
-</li>
-<li>
-<p>傅里叶变换将时域的卷积运算转化为频域的乘法运算，极大简化了线性系统的分析（比如滤波、系统响应计算）。</p>
-</li>
-<li>对于非周期信号，它将时域的瞬变信号分解为<strong>连续分布的无限多频率分量</strong>，这也是 “连续频谱” 的来源。</li>
-</ol>
+<h1 id="1">1</h1>
+<h2 id="2">2</h2>
+<h3 id="3">3</h3>
+<h4 id="4">4</h4>
 
 
 
