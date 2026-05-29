@@ -6,7 +6,7 @@ home: true
 ---
 
 <div class="hero-section">
-  <h1>欢迎来到我的知识库</h1>
+  <h1>欢迎来到我的追光小站</h1>
   <p id="typing-effect"></p>
   <div class="hero-buttons">
     <a href="学习笔记/机械/未来方向" class="hero-btn hero-btn--primary">开始探索 →</a>
@@ -18,7 +18,7 @@ home: true
 document.addEventListener('DOMContentLoaded', function () {
   const el = document.getElementById('typing-effect');
   const texts = [
-    '记录机械设计 · PLC · 工程技术的成长旅程',
+    '关关难过关关过，事事难成事事成',
     '知识来自实践，分享源于热爱',
   ];
   let t = 0, c = 0, del = false;
