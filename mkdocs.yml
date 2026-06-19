@@ -58,12 +58,23 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.inlinehilite    # ← 行内代码高亮  
+  - pymdownx.inlinehilite    # ← 行内代码高亮
+  - pymdownx.arithmatex:     # ← LaTeX 数学公式支持
+      generic: true
+      smart_dollar: true
+      block_syntax:
+        - dollar
+        - square
+      inline_syntax:
+        - dollar
+        - round
 
 extra_css:
   - extra.css ##不需要添加前置目录，自动指向overrides目录
 extra_javascript:
   - js/falling.js   #落叶
+  - js/mathjax.js   # MathJax 配置（必须在 mathjax CDN 之前加载）
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js  # MathJax LaTeX 渲染
   
 # 导航栏配置
 # 定义网站的页面结构和导航顺序
