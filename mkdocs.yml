@@ -80,22 +80,16 @@ extra_javascript:
 # 定义网站的页面结构和导航顺序
 nav:
   - Home: index.md
-  - 技术笔记:
-    - 概览: 学习笔记/index.md
-    - 机械设计: 
-      - 未来方向: 学习笔记/机械/未来方向.md
-      - 三维建模: 学习笔记/机械/SolidWorks.md
-    - PLC: 学习笔记/PLC/PLC学习笔记.md
-    - 嵌入式: 
-      - FreeRTOS入门培训: 学习笔记/嵌入式/FreeRTOS入门培训.md
-      - BLDC的重要参数: 学习笔记/嵌入式/BLDC的重要参数.md
-    - 杂七杂八: 学习笔记/杂七杂八/mkdocs笔记.md
-  - 思考: 
-    - 概览: 思考/index.md
-    - “乖孩子”误区: 思考/乖孩子误区.md
-    - 关于花钱: 思考/关于花钱.md
-  - 树洞:
-    - 每日纪录: 树洞/每日记录.md  
+  - 嵌入式:
+    - BLDC的重要参数: 嵌入式/BLDC的重要参数.md
+    - FreeRTOS入门培训: 嵌入式/FreeRTOS入门培训.md
+  - 机器人:
+    - ROS2学习笔记: 机器人/ROS2学习笔记/📘 ROS2 入门学习笔记（Day 1）.md
+  - 思想垃圾:
+    - 概览: 思想垃圾/index.md
+    - 乖孩子误区: 思想垃圾/乖孩子误区.md
+    - 关于花钱: 思想垃圾/关于花钱.md
+    - 每日记录: 思想垃圾/每日记录.md
   - About: 
     - 关于本站: About/关于本站.md
     - 更新日志: About/更新日志.md
