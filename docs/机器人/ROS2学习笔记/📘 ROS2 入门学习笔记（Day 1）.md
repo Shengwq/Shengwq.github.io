@@ -41,15 +41,15 @@
 
 ```python
 # ①1引入工具（工具箱拿东西，固定写法）
-import rclpy
-from rclpy.node import Node
-from std_msgs.msg import Float64
-import random
+import rclpy # ROS 本体
+from rclpy.node import Node # 节点工具
+from std_msgs.msg import Float64 # 消息类型
+import random # 随机数工具
 
 # ② 定义节点（给程序起个名）
 class MotorEncoderPublisher(Node):
-    def __init__(self):
-        super().__init__('motor_encoder_publisher')
+    def __init__(self): # __init__：一个对象“出生时”自动运行的初始化代码
+        super().__init__('motor_encoder_publisher') # 告诉ROS"我的名字叫 motor_encoder_publisher
 
         # ③ 造喊话器：往 /motor/velocity 喊一个浮点数
         self.publisher = self.create_publisher(Float64, '/motor/velocity', 10)
@@ -188,3 +188,8 @@ if __name__ == '__main__':
 - 再往后：把模拟数据换成**真 STM32 串口数据**，走到实机
 
 > 保持这个节奏：**先讲懂原理 → 再动手 → 停下来消化 → 再往前。** 慢一点，后面全是加速。
+
+
+
+
+
