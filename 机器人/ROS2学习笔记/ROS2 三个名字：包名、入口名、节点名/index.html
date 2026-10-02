@@ -12,31 +12,31 @@
         <meta name="author" content="Sheng">
       
       
-        <link rel="canonical" href="https://shengwq.github.io/%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/">
+        <link rel="canonical" href="https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E4%B8%89%E4%B8%AA%E5%90%8D%E5%AD%97%EF%BC%9A%E5%8C%85%E5%90%8D%E3%80%81%E5%85%A5%E5%8F%A3%E5%90%8D%E3%80%81%E8%8A%82%E7%82%B9%E5%90%8D/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../ROS2%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E9%80%9F%E6%9F%A5%E8%A1%A8/">
       
       
-        <link rel="next" href="../FreeRTOS%E5%85%A5%E9%97%A8%E5%9F%B9%E8%AE%AD/">
+        <link rel="next" href="../ROS2%20%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%95%88%EF%BC%9Acolcon%20build%20%E5%92%8C%20source%20%E8%AF%A6%E8%A7%A3/">
       
       
         
       
       
-      <link rel="icon" href="../../img/favicon.jpg">
+      <link rel="icon" href="../../../img/favicon.jpg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>BLDC的重要参数 - 追光小站</title>
+        <title>三个名字：包名、入口名、节点名 - 追光小站</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bldc" class="md-skip">
+        <a href="#ros2" class="md-skip">
           跳转至
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="追光小站" class="md-header__button md-logo" aria-label="追光小站" data-md-component="logo">
+    <a href="../../.." title="追光小站" class="md-header__button md-logo" aria-label="追光小站" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              BLDC的重要参数
+              三个名字：包名、入口名、节点名
             
           </span>
         </div>
@@ -223,7 +223,7 @@
 
   <!-- 隐藏的音频元素，loop 循环播放 -->
   <audio id="bgm" loop>
-    <source src="../../audio/bgm.mp3" type="audio/mpeg">
+    <source src="../../../audio/bgm.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -289,7 +289,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -306,13 +306,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/" class="md-tabs__link">
           
   
   
@@ -330,6 +328,8 @@
   
   
   
+    
+  
   
     
     
@@ -337,11 +337,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
           
   
   
@@ -366,7 +368,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-tabs__link">
+        <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-tabs__link">
           
   
   
@@ -388,7 +390,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-tabs__link">
+        <a href="../../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-tabs__link">
           
   
   
@@ -424,7 +426,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="追光小站" class="md-nav__button md-logo" aria-label="追光小站" data-md-component="logo">
+    <a href="../../.." title="追光小站" class="md-nav__button md-logo" aria-label="追光小站" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
@@ -454,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -478,10 +480,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -493,20 +493,17 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -524,7 +521,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -539,37 +536,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    BLDC的重要参数
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/" class="md-nav__link">
         
   
   
@@ -585,92 +555,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、电气参数（重点）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、机械参数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、磁链参数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、额定/极限参数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五、其他对建模有用的参数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、如何根据实测参数快速建立模型（回顾我的数据）
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -683,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FreeRTOS%E5%85%A5%E9%97%A8%E5%9F%B9%E8%AE%AD/" class="md-nav__link">
+      <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/FreeRTOS%E5%85%A5%E9%97%A8%E5%9F%B9%E8%AE%AD/" class="md-nav__link">
         
   
   
@@ -715,8 +599,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -726,17 +612,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -754,7 +643,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -769,8 +658,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -795,11 +686,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -820,7 +711,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -838,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+      <a href="../ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="md-nav__link">
         
   
   
@@ -866,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%201%EF%BC%89%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/" class="md-nav__link">
+      <a href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%201%EF%BC%89%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/" class="md-nav__link">
         
   
   
@@ -894,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%202%EF%BC%89launch%20%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6/" class="md-nav__link">
+      <a href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%202%EF%BC%89launch%20%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6/" class="md-nav__link">
         
   
   
@@ -922,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E9%80%9F%E6%9F%A5%E8%A1%A8/" class="md-nav__link">
+      <a href="../ROS2%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E9%80%9F%E6%9F%A5%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -947,10 +838,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E4%B8%89%E4%B8%AA%E5%90%8D%E5%AD%97%EF%BC%9A%E5%8C%85%E5%90%8D%E3%80%81%E5%85%A5%E5%8F%A3%E5%90%8D%E3%80%81%E8%8A%82%E7%82%B9%E5%90%8D/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三个名字：包名、入口名、节点名
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -966,6 +884,181 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、三个名字总览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、逐个讲清
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、逐个讲清">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-package-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 包名（Package Name）—— 装代码的"项目文件夹名"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-executable-name-ros2-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 入口名（Executable Name）—— ros2 run 敲的那个词
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-node-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 节点名（Node Name）—— 运行起来后在系统里登记的名字
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、最容易混的点：入口名 ≠ 节点名
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、为什么节点名重要？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setuppy-entry_points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、setup.py 的 entry_points 详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、setup.py 的 entry_points 详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-motor_demopublisher_nodemain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 motor_demo.publisher_node:main 的拆解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-motor_demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 关键：这里有两个 motor_demo，含义不同
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 完整看懂这一行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 验证方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、一句话总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -978,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%95%88%EF%BC%9Acolcon%20build%20%E5%92%8C%20source%20%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+      <a href="../ROS2%20%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%95%88%EF%BC%9Acolcon%20build%20%E5%92%8C%20source%20%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
         
   
   
@@ -1006,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AE%9E%E6%88%98%EF%BC%9ATurtleBot3%20%E4%BB%BF%E7%9C%9F%E5%BB%BA%E5%9B%BE%E5%85%A5%E9%97%A8/" class="md-nav__link">
+      <a href="../ROS2%20%E5%AE%9E%E6%88%98%EF%BC%9ATurtleBot3%20%E4%BB%BF%E7%9C%9F%E5%BB%BA%E5%9B%BE%E5%85%A5%E9%97%A8/" class="md-nav__link">
         
   
   
@@ -1076,7 +1169,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-nav__link ">
+            <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-nav__link ">
               
   
   
@@ -1120,7 +1213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E4%B9%96%E5%AD%A9%E5%AD%90%E8%AF%AF%E5%8C%BA/" class="md-nav__link">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E4%B9%96%E5%AD%A9%E5%AD%90%E8%AF%AF%E5%8C%BA/" class="md-nav__link">
         
   
   
@@ -1148,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E5%85%B3%E4%BA%8E%E8%8A%B1%E9%92%B1/" class="md-nav__link">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E5%85%B3%E4%BA%8E%E8%8A%B1%E9%92%B1/" class="md-nav__link">
         
   
   
@@ -1176,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E6%AF%8F%E6%97%A5%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E6%AF%8F%E6%97%A5%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         
   
   
@@ -1267,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-nav__link">
+      <a href="../../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-nav__link">
         
   
   
@@ -1295,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../About/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/" class="md-nav__link">
+      <a href="../../../About/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/" class="md-nav__link">
         
   
   
@@ -1353,7 +1446,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        一、电气参数（重点）
+        一、三个名字总览
       
     </span>
   </a>
@@ -1364,10 +1457,49 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        二、机械参数
+        二、逐个讲清
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="二、逐个讲清">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-package-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 包名（Package Name）—— 装代码的"项目文件夹名"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-executable-name-ros2-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 入口名（Executable Name）—— ros2 run 敲的那个词
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-node-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 节点名（Node Name）—— 运行起来后在系统里登记的名字
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1375,7 +1507,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        三、磁链参数
+        三、最容易混的点：入口名 ≠ 节点名
       
     </span>
   </a>
@@ -1386,10 +1518,71 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        四、额定/极限参数
+        四、为什么节点名重要？
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setuppy-entry_points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、setup.py 的 entry_points 详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、setup.py 的 entry_points 详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-motor_demopublisher_nodemain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 motor_demo.publisher_node:main 的拆解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-motor_demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 关键：这里有两个 motor_demo，含义不同
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 完整看懂这一行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 验证方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1397,18 +1590,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五、其他对建模有用的参数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、如何根据实测参数快速建立模型（回顾我的数据）
+        六、一句话总结
       
     </span>
   </a>
@@ -1435,239 +1617,155 @@
   
 
 
-<h1 id="bldc">BLDC的重要参数</h1>
-<p>最近在做无刷电机（BLDC）六步换向的仿真和控制，这篇文章讲讲BLDC（直流无刷电机）的重要参数，根据参数的类型我把它们分成<strong>电气参数、机械参数、磁链参数、额定/极限参数</strong>，以及一些其他对建模有用的参数。<strong>（重点：电气参数）</strong></p>
-<h2 id="_1">一、电气参数（重点）</h2>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>符号</th>
-<th>单位</th>
-<th>说明</th>
-<th>重要性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>相电阻</strong></td>
-<td><span class="arithmatex">\(R_s\)</span></td>
-<td><span class="arithmatex">\(\Omega\)</span></td>
-<td>每相定子绕组的直流电阻，决定稳态电流和铜损</td>
-<td>★★★★★</td>
-</tr>
-<tr>
-<td><strong>相电感</strong></td>
-<td><span class="arithmatex">\(L_s\)</span></td>
-<td>H</td>
-<td>每相绕组的自感（对于表贴式BLDC，<span class="arithmatex">\(L_d = L_q = L_s\)</span>），决定电流上升/下降速度</td>
-<td>★★★★★</td>
-</tr>
-<tr>
-<td><strong>极对数</strong></td>
-<td><span class="arithmatex">\(P\)</span></td>
-<td>无</td>
-<td>转子永磁体的极对数（极数/2），决定电角速度与机械角速度的关系：<span class="arithmatex">\(\omega_e = P \omega_m\)</span></td>
-<td>★★★★☆</td>
-</tr>
-<tr>
-<td><strong>反电势常数</strong></td>
-<td><span class="arithmatex">\(K_e\)</span></td>
-<td>V·s/rad 或 V/rpm</td>
-<td>单位机械角速度（或转速）产生的相反电势峰值或线有效值。需要明确是线还是相、有效值还是峰值。对于建模，<span class="arithmatex">\(K_e = P\psi_f\)</span>（电角速度基值下）</td>
-<td>★★★★★</td>
-</tr>
-<tr>
-<td><strong>转矩常数</strong></td>
-<td><span class="arithmatex">\(K_t\)</span></td>
-<td>Nm/A</td>
-<td>单位电流（通常为q轴电流）产生的电磁转矩。理论上有 <span class="arithmatex">\(K_t = \frac{3}{2} P \psi_f\)</span></td>
-<td>★★★★★</td>
-</tr>
-</tbody>
-</table>
+<h1 id="ros2">ROS2 三个名字：包名、入口名、节点名</h1>
 <blockquote>
-<p><strong>注意</strong>：厂家常提供<strong>线电阻</strong>和<strong>线电感</strong>（UV、UW、VW之间测得的数值）。对于Y型绕组：<br />
-<span class="arithmatex">\(R_s = R_{\text{线}} / 2\)</span>， <span class="arithmatex">\(L_s = L_{\text{线}} / 2\)</span>。</p>
+<p>ROS2 里最容易混的三个名字：包名、入口名、节点名。本篇逐个讲清它们在哪定义、在哪确认、什么时候用，最后拆解 <code>setup.py</code> 入口点。
+对应主教程：《ROS2 入门实践全流程教程》第 2、3 章。</p>
 </blockquote>
-<h2 id="_2">二、机械参数</h2>
+<hr />
+<h2 id="_1">一、三个名字总览</h2>
 <table>
 <thead>
 <tr>
-<th>参数</th>
-<th>符号</th>
-<th>单位</th>
-<th>说明</th>
-<th>重要性</th>
+<th>名字</th>
+<th>在哪定义</th>
+<th>在哪确认</th>
+<th>长什么样</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>转动惯量</strong></td>
-<td><span class="arithmatex">\(J\)</span></td>
-<td>kg·m²</td>
-<td>转子及负载折算到电机轴的总转动惯量，决定机械时间常数</td>
-<td>★★★★★</td>
+<td><strong>包名</strong></td>
+<td>创建时 + <code>package.xml</code> + <code>setup.py</code></td>
+<td><code>ros2 pkg list</code></td>
+<td><code>motor_demo</code></td>
 </tr>
 <tr>
-<td><strong>粘滞摩擦系数</strong></td>
-<td><span class="arithmatex">\(B\)</span></td>
-<td>Nm·s/rad</td>
-<td>轴承和风阻等产生的阻尼，通常较小，在简化模型中可忽略</td>
-<td>★★★☆☆</td>
+<td><strong>入口名</strong></td>
+<td><code>setup.py</code> 的 <code>console_scripts</code></td>
+<td>自己看 setup.py</td>
+<td><code>publisher_node</code></td>
 </tr>
 <tr>
-<td><strong>静摩擦转矩</strong></td>
-<td><span class="arithmatex">\(T_{\text{fric}}\)</span></td>
-<td>Nm</td>
-<td>启动时需要克服的静摩擦力，对低速控制影响较大</td>
-<td>★★★☆☆</td>
+<td><strong>节点名</strong></td>
+<td>代码里 <code>super().__init__('xxx')</code></td>
+<td><code>ros2 node list</code></td>
+<td><code>motor_encoder_publisher</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="_3">三、磁链参数</h2>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>符号</th>
-<th>单位</th>
-<th>说明</th>
-<th>重要性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>永磁体磁链</strong></td>
-<td><span class="arithmatex">\(\psi_f\)</span></td>
-<td>Wb 或 V·s/rad</td>
-<td>转子永磁体在定子相绕组中产生的磁链幅值。它与反电势常数直接相关</td>
-<td>★★★★★</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(d\)</span>轴电感</td>
-<td><span class="arithmatex">\(L_d\)</span></td>
-<td>H</td>
-<td>对于凸极式BLDC（内嵌永磁体），<span class="arithmatex">\(L_d \neq L_q\)</span>，需要分别给出</td>
-<td>★★★★☆</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(q\)</span>轴电感</td>
-<td><span class="arithmatex">\(L_q\)</span></td>
-<td>H</td>
-<td>同上</td>
-<td>★★★★☆</td>
-</tr>
-</tbody>
-</table>
-<p>对于<strong>表贴式BLDC</strong>（大多数小型、低成本电机）：<span class="arithmatex">\(L_d = L_q = L_s\)</span>。</p>
-<h2 id="_4">四、额定/极限参数</h2>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>符号</th>
-<th>单位</th>
-<th>说明</th>
-<th>重要性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>额定电压</strong></td>
-<td><span class="arithmatex">\(V_{\text{rated}}\)</span></td>
-<td>V</td>
-<td>通常为直流母线电压，决定了最大输出能力</td>
-<td>★★★★☆</td>
-</tr>
-<tr>
-<td><strong>额定电流</strong></td>
-<td><span class="arithmatex">\(I_{\text{rated}}\)</span></td>
-<td>A</td>
-<td>长时间安全工作电流，用于设置电流环限幅</td>
-<td>★★★★☆</td>
-</tr>
-<tr>
-<td><strong>峰值电流</strong></td>
-<td><span class="arithmatex">\(I_{\text{peak}}\)</span></td>
-<td>A</td>
-<td>短时允许最大电流（通常为额定2~3倍），决定最大加速转矩</td>
-<td>★★★☆☆</td>
-</tr>
-<tr>
-<td><strong>额定转速</strong></td>
-<td><span class="arithmatex">\(n_{\text{rated}}\)</span></td>
-<td>rpm</td>
-<td>额定工况下的机械转速</td>
-<td>★★★☆☆</td>
-</tr>
-<tr>
-<td><strong>额定转矩</strong></td>
-<td><span class="arithmatex">\(T_{\text{rated}}\)</span></td>
-<td>Nm</td>
-<td>额定输出转矩</td>
-<td>★★★☆☆</td>
-</tr>
-<tr>
-<td><strong>最大允许转速</strong></td>
-<td><span class="arithmatex">\(n_{\text{max}}\)</span></td>
-<td>rpm</td>
-<td>机械极限（离心力、轴承限制）</td>
-<td>★★★☆☆</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_5">五、其他对建模有用的参数</h2>
+<hr />
+<h2 id="_2">二、逐个讲清</h2>
+<h3 id="1-package-name">① 包名（Package Name）—— 装代码的"项目文件夹名"</h3>
+<p><strong>在哪定义</strong>：
+- 创建时：<code>ros2 pkg create --build-type ament_python motor_demo</code> ← 这个 <code>motor_demo</code> 就是包名
+- 同时在两个文件里登记：<code>package.xml</code> 的 <code>&lt;name&gt;</code> 和 <code>setup.py</code> 顶部的 <code>name</code></p>
+<p><strong>在哪确认</strong>：<code>ros2 pkg list | grep motor_demo</code></p>
+<p><strong>什么时候用</strong>：<code>ros2 run motor_demo publisher_node</code> ← 第一个词</p>
+<h3 id="2-executable-name-ros2-run">② 入口名（Executable Name）—— <code>ros2 run</code> 敲的那个词</h3>
+<p><strong>在哪定义</strong>：<code>setup.py</code> 的 <code>entry_points</code>：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s1">&#39;publisher_node = motor_demo.publisher_node:main&#39;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">#   ↑入口名（ros2 run 敲的）</span>
+</span></code></pre></div>
+<p><strong>在哪确认</strong>：打开 setup.py 看就行</p>
+<p><strong>什么时候用</strong>：<code>ros2 run motor_demo publisher_node</code> ← 第二个词</p>
+<h3 id="3-node-name">③ 节点名（Node Name）—— 运行起来后在系统里登记的名字</h3>
+<p><strong>在哪定义</strong>：代码里</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MotorEncoderPublisher</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;motor_encoder_publisher&#39;</span><span class="p">)</span>  <span class="c1"># ← 节点名</span>
+</span></code></pre></div>
+<p><strong>在哪确认</strong>：运行后 <code>ros2 node list</code>，显示的就是它</p>
+<hr />
+<h2 id="_3">三、最容易混的点：入口名 ≠ 节点名</h2>
+<p>看你自己的例子：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>publisher_node
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">        </span>↑包名<span class="w">       </span>↑入口名
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>但运行后<span class="w"> </span>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w"> </span>显示的是：
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>motor_encoder_publisher
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>↑节点名（代码里<span class="w"> </span>super<span class="o">()</span>.__init__<span class="w"> </span>指定的）
+</span></code></pre></div>
+<p><strong>入口名和节点名经常不一样！</strong></p>
 <ul>
-<li><strong>霍尔传感器安装角度</strong>（120°或60°电角度）——用于方波控制的换相逻辑。</li>
-<li><strong>编码器分辨率</strong>（脉冲数/转）——用于速度/位置反馈精度。</li>
-<li><strong>PWM频率</strong>——影响电流纹波和控制器设计带宽。</li>
+<li>入口名：<code>ros2 run</code> 启动时用的"快捷方式"（setup.py 定的）</li>
+<li>节点名：节点在 ROS 系统里的"身份证"（代码里定的）</li>
 </ul>
-<h2 id="_6">六、如何根据实测参数快速建立模型（回顾我的数据）</h2>
-<p>下面是张老师提供的数据：</p>
+<p>如果代码里不写 <code>super().__init__('xxx')</code>，ROS 会<strong>默认用入口名当节点名</strong>——所以很多例子看着像同一个名字，其实是"默认继承"了。</p>
+<hr />
+<h2 id="_4">四、为什么节点名重要？</h2>
+<p>因为以后<strong>话题、服务、参数都挂在节点名下</strong>，而且<strong>同一时间不能有两个同名节点</strong>。你用 <code>ros2 node list</code> 看到的就是节点名，用它排查"哪个节点在跑"。</p>
+<blockquote>
+<p>补充：launch 里 <code>name='pub_node'</code> 可以<strong>改写节点名</strong>，但只改节点名、不改话题名。话题靠话题名对接，和节点名无关。</p>
+</blockquote>
+<hr />
+<h2 id="setuppy-entry_points">五、<code>setup.py</code> 的 <code>entry_points</code> 详解</h2>
+<h3 id="51-motor_demopublisher_nodemain">5.1 <code>motor_demo.publisher_node:main</code> 的拆解</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>motor_demo  .  publisher_node  :  main
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   ↑            ↑                ↑
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Python包名     Python文件名      函数名
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>（源码目录）   （不含 .py）       （程序入口）
+</span></code></pre></div>
+<p>三个部分，各管一段：</p>
 <table>
 <thead>
 <tr>
-<th>实测项</th>
-<th>值</th>
-<th>换算后的模型参数</th>
+<th>段</th>
+<th>是什么</th>
+<th>对应磁盘位置</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>线电阻 (UV 3.1Ω, UW 3.4Ω, VW 3.4Ω)</td>
-<td>平均3.3Ω</td>
-<td>相电阻 <span class="arithmatex">\(R_s = 1.65\,\Omega\)</span></td>
+<td><code>motor_demo</code></td>
+<td>Python 包名（源码目录）</td>
+<td><code>~/ros2_ws/src/motor_demo/motor_demo/</code></td>
 </tr>
 <tr>
-<td>线电感 (UV 3.17mH, UW 3.64mH, VW 3.46mH)</td>
-<td>平均3.42mH</td>
-<td>相电感 <span class="arithmatex">\(L_s = 1.71\,\text{mH}\)</span></td>
+<td><code>publisher_node</code></td>
+<td>文件名（<strong>不带 .py</strong>）</td>
+<td><code>.../motor_demo/publisher_node.py</code></td>
 </tr>
 <tr>
-<td>反电势系数 0.014 Vrms·s/rad</td>
-<td>含义需确认</td>
-<td>若为线电压有效值/机械角速度，则相反电势峰值/电角速度 <span class="arithmatex">\(\psi_f\)</span> 需换算</td>
-</tr>
-<tr>
-<td>转矩常数 0.08 Nm/A</td>
-<td>明确</td>
-<td><span class="arithmatex">\(K_t = 0.08\)</span> 直接使用</td>
-</tr>
-<tr>
-<td>转子惯量 7.35 g·cm²</td>
-<td>换算</td>
-<td><span class="arithmatex">\(J = 7.35\times10^{-7}\,\text{kg·m}^2\)</span></td>
-</tr>
-<tr>
-<td>极数 4</td>
-<td>极对数</td>
-<td><span class="arithmatex">\(P = 2\)</span></td>
+<td><code>main</code></td>
+<td>文件里的函数</td>
+<td>文件里的 <code>def main():</code></td>
 </tr>
 </tbody>
 </table>
-<p>有了上述参数，就可以写出完整的传递函数或状态空间模型。</p>
-<p><strong>总结</strong>：最重要的五个参数是 <span class="arithmatex">\(R_s, L_s, K_t, J, P\)</span>。如果你只能获取少量参数，优先测量或获取这五个。对于更高精度的控制（如弱磁、MTPA），则需要 <span class="arithmatex">\(L_d, L_q, \psi_f\)</span> 的准确值。</p>
+<p>连起来翻译成大白话：</p>
+<blockquote>
+<p><strong>"到 motor_demo 这个源码目录里，打开 publisher_node.py 这个文件，从它的 main() 函数开始跑"</strong></p>
+</blockquote>
+<h3 id="52-motor_demo">5.2 关键：这里有两个 motor_demo，含义不同</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>~/ros2_ws/src/motor_demo/          ← 第一个：ROS 功能包目录（package.xml 所在）
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>~/ros2_ws/src/motor_demo/motor_demo/  ← 第二个：Python 源码目录（.py 文件所在）
+</span></code></pre></div>
+<ul>
+<li><code>ros2 run</code> 里的 <code>motor_demo</code> → ROS <strong>功能包名</strong>（对应外层目录）</li>
+<li><code>:main</code> 左边的 <code>motor_demo</code> → <strong>Python 包名</strong>（对应内层源码目录）</li>
+</ul>
+<p>两个名字一样，但一个是"ROS 的包"，一个是"Python 的包"，恰好同名。这是 ament_python 的默认结构，新手经常绕晕。</p>
+<h3 id="53">5.3 完整看懂这一行</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="s1">&#39;publisher_node = motor_demo.publisher_node:main&#39;</span><span class="p">,</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">#       ↑                       ↑</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">#  入口名（ros2 run 敲的）    定位路径（入口名指向的目标）</span>
+</span></code></pre></div>
+<p><strong>入口名</strong> = 你敲的快捷方式（随便叫啥都行，但习惯上跟文件名一致）
+<strong>定位路径</strong> = 系统真正去执行的地方（不能写错，错了就 "No executable found"）</p>
+<h3 id="54">5.4 验证方式</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>publisher_node
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">#             ↑系统查 setup.py 找到这一行</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1">#             然后去执行 motor_demo.publisher_node 文件里的 main()</span>
+</span></code></pre></div>
+<hr />
+<h2 id="_5">六、一句话总结</h2>
+<blockquote>
+<p><code>motor_demo.publisher_node:main</code> 是一个<strong>"目录.文件:函数"的定位地址</strong>，跟 <code>C:\Users\xxx\publisher_node.py</code> 这种文件路径是同一回事，只是用了 Python 的写法。</p>
+</blockquote>
+<p>看懂这行，setup.py 的入口点就不再是黑盒了。</p>
 
 
 
@@ -1727,14 +1825,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../js/falling.js"></script>
+        <script src="../../../js/falling.js"></script>
       
-        <script src="../../js/mathjax.js"></script>
+        <script src="../../../js/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,0 +1,2291 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sheng的个人网站">
+      
+      
+        <meta name="author" content="Sheng">
+      
+      
+        <link rel="canonical" href="https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AE%9E%E6%88%98%EF%BC%9ATurtleBot3%20%E4%BB%BF%E7%9C%9F%E5%BB%BA%E5%9B%BE%E5%85%A5%E9%97%A8/">
+      
+      
+        <link rel="prev" href="../ROS2%20%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%95%88%EF%BC%9Acolcon%20build%20%E5%92%8C%20source%20%E8%AF%A6%E8%A7%A3/">
+      
+      
+        <link rel="next" href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../img/favicon.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>TurtleBot3仿真建图 - 追光小站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ros2-turtlebot3" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光小站" class="md-header__button md-logo" aria-label="追光小站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光小站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TurtleBot3仿真建图
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Shengwq/Shengwq.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My-repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+  
+
+  <!-- 全局黑胶唱片播放器 -->
+  <div id="vinyl-player" class="vinyl-player-instance">
+    <div id="vinyl-disk" class="vinyl-disk"></div>
+    <div id="play-btn" class="play-pause-btn paused"></div>
+  </div>
+
+  <!-- 隐藏的音频元素，loop 循环播放 -->
+  <audio id="bgm" loop>
+    <source src="../../../audio/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio   = document.getElementById('bgm');
+      const btn     = document.getElementById('play-btn');
+      const disk    = document.getElementById('vinyl-disk');
+
+      // ── 状态恢复：翻页后记住是否在播放 ──────────────────────
+      if (localStorage.getItem('bgm_playing') === 'true') {
+        audio.play().then(() => {
+          btn.classList.replace('paused', 'playing');
+          disk.style.animationPlayState = 'running';
+        }).catch(() => {
+          // 浏览器自动播放策略阻止时静默失败
+          localStorage.setItem('bgm_playing', 'false');
+        });
+      }
+
+      // ── 点击切换播放/暂停 ────────────────────────────────────
+      btn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play().then(() => {
+            btn.classList.replace('paused', 'playing');
+            disk.style.animationPlayState = 'running';
+            localStorage.setItem('bgm_playing', 'true');
+          }).catch(err => console.warn('播放失败:', err));
+        } else {
+          audio.pause();
+          btn.classList.replace('playing', 'paused');
+          disk.style.animationPlayState = 'paused';
+          localStorage.setItem('bgm_playing', 'false');
+        }
+      });
+
+      // ── 音频事件同步状态 ─────────────���───────────────────────
+      audio.addEventListener('play',  () => {
+        btn.classList.replace('paused', 'playing');
+        disk.style.animationPlayState = 'running';
+      });
+      audio.addEventListener('pause', () => {
+        btn.classList.replace('playing', 'paused');
+        disk.style.animationPlayState = 'paused';
+      });
+    });
+  </script>
+
+  
+  
+
+
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  嵌入式
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  机器人
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  思想垃圾
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  关于
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光小站" class="md-nav__button md-logo" aria-label="追光小站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    追光小站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Shengwq/Shengwq.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My-repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    嵌入式
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    嵌入式
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLDC的重要参数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/FreeRTOS%E5%85%A5%E9%97%A8%E5%9F%B9%E8%AE%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS入门培训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器人
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS2学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ROS2学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门实践全流程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%201%EF%BC%89%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 1：发布与订阅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%202%EF%BC%89launch%20%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 2：launch启动文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E9%80%9F%E6%9F%A5%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念速查表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E4%B8%89%E4%B8%AA%E5%90%8D%E5%AD%97%EF%BC%9A%E5%8C%85%E5%90%8D%E3%80%81%E5%85%A5%E5%8F%A3%E5%90%8D%E3%80%81%E8%8A%82%E7%82%B9%E5%90%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三个名字：包名、入口名、节点名
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%95%88%EF%BC%9Acolcon%20build%20%E5%92%8C%20source%20%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编译与生效：colcon build和source
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TurtleBot3仿真建图
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TurtleBot3仿真建图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、项目全貌：今天在干什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、三个核心概念（零基础友好）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、三个核心概念（零基础友好）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 仿真是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Gazebo 是仿真软件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-turtlebot3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. TurtleBot3 是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Gazebo 怎么"造"出房间和小车：全是配置文件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Gazebo 怎么&#34;造&#34;出房间和小车：全是配置文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        房间图纸长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小车图纸里的雷达配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、安装配置全流程（实测命令）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、安装配置全流程（实测命令）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 安装依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 建工作空间 + clone 两个仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 编译
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-bashrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 设置环境变量（写进 ~/.bashrc 一劳永逸）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、建图流程（SLAM）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、建图流程（SLAM）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLAM 是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保存地图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        地图怎么读
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wsl2-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、WSL2 跑 Gazebo 卡顿：原因与独显切换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、WSL2 跑 Gazebo 卡顿：原因与独显切换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsl2-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么 WSL2 3D 仿真性能一般
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自查：用的是不是核显
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        切到独显（立竿见影）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、常见坑记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、下一步：导航
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、自查清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    思想垃圾
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    思想垃圾
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E4%B9%96%E5%AD%A9%E5%AD%90%E8%AF%AF%E5%8C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    乖孩子误区
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E5%85%B3%E4%BA%8E%E8%8A%B1%E9%92%B1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于花钱
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E6%AF%8F%E6%97%A5%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    每日记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    关于
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于本站
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    更新日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、项目全貌：今天在干什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、三个核心概念（零基础友好）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、三个核心概念（零基础友好）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 仿真是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Gazebo 是仿真软件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-turtlebot3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. TurtleBot3 是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Gazebo 怎么"造"出房间和小车：全是配置文件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Gazebo 怎么&#34;造&#34;出房间和小车：全是配置文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        房间图纸长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小车图纸里的雷达配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、安装配置全流程（实测命令）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、安装配置全流程（实测命令）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 安装依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 建工作空间 + clone 两个仓库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 编译
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-bashrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 设置环境变量（写进 ~/.bashrc 一劳永逸）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、建图流程（SLAM）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、建图流程（SLAM）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLAM 是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保存地图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        地图怎么读
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wsl2-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、WSL2 跑 Gazebo 卡顿：原因与独显切换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、WSL2 跑 Gazebo 卡顿：原因与独显切换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsl2-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么 WSL2 3D 仿真性能一般
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自查：用的是不是核显
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        切到独显（立竿见影）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、常见坑记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、下一步：导航
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、自查清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ros2-turtlebot3">ROS2 实战：TurtleBot3 仿真建图入门</h1>
+<blockquote>
+<p>本篇是 TurtleBot3 开源项目实战的详细笔记，从零讲清：仿真是什么、Gazebo 怎么工作、怎么把虚拟小车跑起来建出地图。
+前置要求：已按《ROS2入门实践全流程笔记》装好环境（WSL2 + Ubuntu 22.04 + ROS2 Humble），已掌握发布/订阅基本概念。
+环境：Windows + WSL2 + TurtleBot3 Humble 源码编译版</p>
+</blockquote>
+<hr />
+<h2 id="_1">一、项目全貌：今天在干什么</h2>
+<p>用一个"4 层结构"理解整个项目，每一层都有自己的图纸和报错——报错时先判断是哪一层，就不会慌：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>① 你（遥控手柄，终端3）
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   ↓ 速度指令 /cmd_vel
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>② 虚拟世界 Gazebo（终端1）—— 照着&quot;图纸&quot;搭房间和小车，物理引擎让车真的会动
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   ↓ 雷达扫描 /scan + 里程计 /odom
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>③ 大脑（终端2）—— cartographer 边定位边拼地图 /  navigation2 拿着地图导航
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ↓ 地图 /map
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>④ 显示 RViz + 地图文件 map.pgm
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>名字</th>
+<th>一句话</th>
+<th>常见报错</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>遥控</td>
+<td>按 w/a/d 发速度指令（发布者！）</td>
+<td>没设环境变量</td>
+</tr>
+<tr>
+<td>②</td>
+<td>世界</td>
+<td>Gazebo 仿真软件</td>
+<td>gzserver 卡、spawn 失败</td>
+</tr>
+<tr>
+<td>③</td>
+<td>大脑</td>
+<td>建图/导航算法</td>
+<td>话题对不上</td>
+</tr>
+<tr>
+<td>④</td>
+<td>显示</td>
+<td>RViz 画给你看</td>
+<td>卡顿、崩</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">二、三个核心概念（零基础友好）</h2>
+<h3 id="1">1. 仿真是什么</h3>
+<p>在电脑里搭一个<strong>机器人练习场</strong>——不花钱买真车、不怕撞墙、随时重置。真实机器人的算法（导航、避障）可以先在这里开发调试，跑通了再上真机。</p>
+<h3 id="2-gazebo">2. Gazebo 是仿真软件</h3>
+<p>专门给机器人用的 3D 仿真器（区别于游戏引擎）：
+- 管<strong>场景</strong>：房间、墙、地面
+- 管<strong>物理</strong>：重力、碰撞、摩擦（内置物理引擎）
+- 管<strong>传感器</strong>：激光雷达、相机、IMU 会真的产生数据</p>
+<h3 id="3-turtlebot3">3. TurtleBot3 是什么</h3>
+<p>韩国 ROBOTIS 公司做的<strong>开源机器人小车</strong>（图纸+代码全公开）：
+- 硬件：小车底盘 + 两个轮子 + 树莓派（大脑）+ 激光雷达（眼睛）
+- 软件：仿真包（虚拟房间+小车）、建图包、导航包全开源
+- 地位：全球最流行的 ROS 入门机器人之一，面试高频话题</p>
+<hr />
+<h2 id="gazebo">三、Gazebo 怎么"造"出房间和小车：全是配置文件</h2>
+<p>Gazebo <strong>不会凭空造东西</strong>，一切都靠"模型文件"描述，像乐高说明书：</p>
+<table>
+<thead>
+<tr>
+<th>东西</th>
+<th>用什么文件</th>
+<th>相当于</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>虚拟房间</td>
+<td><code>.world</code> 文件（XML 文本）</td>
+<td>房间的设计图纸</td>
+</tr>
+<tr>
+<td>虚拟小车</td>
+<td><code>.sdf</code> 文件（XML 文本）</td>
+<td>小车的零件清单+装配说明</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">房间图纸长什么样</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat<span class="w"> </span>~/turtlebot3_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/worlds/turtlebot3_world.world
+</span></code></pre></div>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;include&gt;&lt;uri&gt;</span>model://ground_plane<span class="nt">&lt;/uri&gt;&lt;/include&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 引用：铺地面 --&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">&lt;include&gt;&lt;uri&gt;</span>model://sun<span class="nt">&lt;/uri&gt;&lt;/include&gt;</span><span class="w">           </span><span class="cm">&lt;!-- 引用：挂光源 --&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">&lt;physics</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ode&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&lt;real_time_update_rate&gt;</span>1000<span class="nt">&lt;/real_time_update_rate&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 每秒算 1000 次物理 --&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">&lt;/physics&gt;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">&lt;model</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;turtlebot3_world&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">&lt;static&gt;</span>1<span class="nt">&lt;/static&gt;</span><span class="w">            </span><span class="cm">&lt;!-- 1=静态物体（墙） --&gt;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">&lt;include&gt;&lt;uri&gt;</span>model://turtlebot3_world<span class="nt">&lt;/uri&gt;&lt;/include&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 引用房间主体 --&gt;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nt">&lt;/model&gt;</span>
+</span></code></pre></div>
+<p><strong>关键认知</strong>：
+- <code>&lt;include&gt;</code> = 引用，像 C 语言 <code>#include</code>——墙的详细定义在 <code>models/turtlebot3_world/model.sdf</code> 里
+- 改文件 = 改世界（改物理频率、往房间加模型）
+- 这些文件是<strong>开源项目写好的</strong>，clone 下来就自带，可以按需修改</p>
+<h3 id="_4">小车图纸里的雷达配置</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cat<span class="w"> </span>~/turtlebot3_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/models/turtlebot3_burger/model.sdf
+</span></code></pre></div>
+<p>里面能看到小车的"零件清单"：底盘（质量）、轮子（位置）、雷达（每秒扫几次、一圈几个点）——改这些数字 = 改小车的"眼睛"。</p>
+<hr />
+<h2 id="_5">四、安装配置全流程（实测命令）</h2>
+<h3 id="1_1">1. 安装依赖</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-gazebo-*<span class="w"> </span>ros-humble-cartographer<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>ros-humble-cartographer-ros<span class="w"> </span>ros-humble-navigation2<span class="w"> </span>ros-humble-nav2-bringup
+</span></code></pre></div>
+<p>缺什么补什么（常见）：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-turtlebot3-msgs<span class="w"> </span>ros-humble-dynamixel-sdk
+</span></code></pre></div></p>
+<h3 id="2-clone">2. 建工作空间 + clone 两个仓库</h3>
+<p><strong>turtlebot3 需要两个仓库</strong>（容易漏第二个）：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/turtlebot3_ws/src
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>~/turtlebot3_ws/src
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 仓库1：主仓库（含消息 msgs、建图 cartographer、导航 navigation2）</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>humble<span class="w"> </span>https://github.com/ROBOTIS-GIT/turtlebot3.git
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># 仓库2：仿真仓库（含 Gazebo 世界和小车模型）</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>humble<span class="w"> </span>https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+</span></code></pre></div>
+<blockquote>
+<p>GitHub 国内访问不稳定时：换镜像 <code>https://ghproxy.com/https://github.com/...</code>，或设置 <code>git config --global http.version HTTP/1.1</code> 后重试。</p>
+</blockquote>
+<h3 id="3">3. 编译</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>~/turtlebot3_ws
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span></code></pre></div>
+<blockquote>
+<p><code>--symlink-install</code>：编译产物不复制，只做"快捷方式"指向源码——开发期改代码不用重新 build（Python 包直接生效）。正式部署用普通 <code>colcon build</code>。</p>
+</blockquote>
+<h3 id="4-bashrc">4. 设置环境变量（写进 ~/.bashrc 一劳永逸）</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source ~/turtlebot3_ws/install/setup.bash&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export TURTLEBOT3_MODEL=burger&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/humble/share/turtlebot3_gazebo/models&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+<blockquote>
+<p><code>TURTLEBOT3_MODEL</code> 是 turtlebot3 所有启动脚本的"入场券"（burger/waffle 车型选择），不设就报 <code>KeyError: 'TURTLEBOT3_MODEL'</code>。</p>
+</blockquote>
+<hr />
+<h2 id="slam">五、建图流程（SLAM）</h2>
+<p>三个终端，各管一层：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 终端1：启动虚拟世界（场地）</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 终端2：启动建图（大脑，会弹出 RViz）</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># 终端3：键盘遥控（手柄），w/a/d 开小车逛房间</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
+</span></code></pre></div>
+<p>建图成功的关键日志：
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>odom rate: 29.41 Hz      ← 里程计数据正常
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>scan rate: 5.00 Hz       ← 雷达数据正常
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Added trajectory with ID &#39;0&#39;  ← 建图轨迹已启动
+</span></code></pre></div></p>
+<h3 id="slam_1">SLAM 是什么</h3>
+<p><strong>同时定位与建图</strong>。比喻：闭着眼走进陌生房间，边走边用手杖（激光）探墙，同时在脑子里记"走了几步、拐了几次弯、墙在哪"——走完，脑子里就有了房间地图。</p>
+<ul>
+<li>定位 = 我走到哪了</li>
+<li>建图 = 墙在哪、路在哪</li>
+<li>两者互相依赖，同时完成</li>
+</ul>
+<h3 id="_6">保存地图</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>~/map
+</span></code></pre></div>
+<p>生成 <code>~/map.pgm</code>（图片）和 <code>~/map.yaml</code>（配置）。</p>
+<p>用 Windows 图片查看器直接看（绕过卡顿的 RViz）：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>explorer.exe<span class="w"> </span>~/map.pgm
+</span></code></pre></div>
+<h3 id="_7">地图怎么读</h3>
+<table>
+<thead>
+<tr>
+<th>颜色</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>灰色</td>
+<td>没探索到的区域</td>
+</tr>
+<tr>
+<td>白色</td>
+<td>逛过、确认是空地的区域</td>
+</tr>
+<tr>
+<td>黑色</td>
+<td>障碍物/墙壁边缘</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="wsl2-gazebo">六、WSL2 跑 Gazebo 卡顿：原因与独显切换</h2>
+<h3 id="wsl2-3d">为什么 WSL2 3D 仿真性能一般</h3>
+<p>WSL2 本质是轻量虚拟机，GPU 不是直通的：
+1. OpenGL 调用要<strong>翻译</strong>成 Windows 的 Direct3D 12 再交给显卡（WSLg 转译层）
+2. 显卡加速没生效时回退 <code>llvmpipe</code>（<strong>用 CPU 算画面</strong>）→ 灾难级卡顿
+3. 窗口还要经 Wayland/XWayland 转发回 Windows 显示</p>
+<p><strong>注意</strong>：物理仿真引擎是 CPU 算的，基本没损失——<strong>慢的是画面渲染，不是仿真逻辑</strong>。</p>
+<h3 id="_8">自查：用的是不是核显</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mesa-utils
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>glxinfo<span class="w"> </span>-B
+</span></code></pre></div>
+<ul>
+<li><code>D3D12 (Intel...)</code> → 核显（默认走核显，省电策略）</li>
+<li><code>llvmpipe</code> → 软件渲染（最卡，先 <code>wsl --update</code> + <code>wsl --shutdown</code> 重启）</li>
+</ul>
+<h3 id="_9">切到独显（立竿见影）</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export MESA_D3D12_DEFAULT_ADAPTER_NAME=&quot;NVIDIA GeForce RTX 4060 Laptop GPU&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+<p>变量名写<strong>设备管理器里显示的显卡全名</strong>。改完重启 GUI 程序（RViz 等），验证 <code>glxinfo -B</code> 的 renderer 变为独显。</p>
+<p>切独显后 RViz 流畅度"提升无数倍"——实测有效。</p>
+<blockquote>
+<p>注意：如果 gzserver（世界后台）在独显变量下启动卡住，可以让 gzserver 用默认设置（启动它的终端 <code>unset MESA_D3D12_DEFAULT_ADAPTER_NAME</code>），只让 RViz 用独显。</p>
+</blockquote>
+<hr />
+<h2 id="_10">七、常见坑记录</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Package 'turtlebot3_gazebo' not found</code></td>
+<td>新终端没 source</td>
+<td><code>source ~/turtlebot3_ws/install/setup.bash</code>（或写进 .bashrc）</td>
+</tr>
+<tr>
+<td><code>KeyError: 'TURTLEBOT3_MODEL'</code></td>
+<td>没设车型变量</td>
+<td><code>export TURTLEBOT3_MODEL=burger</code></td>
+</tr>
+<tr>
+<td>clone 报 HTTP/2 / TLS 错误</td>
+<td>国内访问 GitHub 不稳定</td>
+<td>镜像 / <code>git config --global http.version HTTP/1.1</code></td>
+</tr>
+<tr>
+<td>编译报 <code>Could not find turtlebot3_msgs</code></td>
+<td>缺依赖包</td>
+<td><code>sudo apt install ros-humble-turtlebot3-msgs</code></td>
+</tr>
+<tr>
+<td>编译报 <code>Could not find dynamixel_sdk</code></td>
+<td>缺依赖包</td>
+<td><code>sudo apt install ros-humble-dynamixel-sdk</code></td>
+</tr>
+<tr>
+<td>launch 报"找不到 launch 文件"</td>
+<td>文件名不对</td>
+<td><code>ls .../share/包名/launch/</code> 看真实文件名</td>
+</tr>
+<tr>
+<td>gzserver 死 / spawn 超时</td>
+<td>残留进程 / 初始化卡住</td>
+<td><code>pkill -f gzserver</code> 后重启</td>
+</tr>
+<tr>
+<td>gzclient 崩溃</td>
+<td>WSL2 下老毛病</td>
+<td>无视（画面而已，gzserver 活着就行）</td>
+</tr>
+<tr>
+<td>RViz 卡成 PPT</td>
+<td>核显渲染</td>
+<td>切独显（见第六节）</td>
+</tr>
+<tr>
+<td>RViz 一开 TF 就崩</td>
+<td>Mesa 转译层着色器 bug</td>
+<td>关掉 TF，用 LaserScan + Odometry 轨迹</td>
+</tr>
+<tr>
+<td>不知道小车在哪</td>
+<td>没看对地方</td>
+<td>激光点云中心=小车；Odometry 轨迹末端=小车位置</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_11">八、下一步：导航</h2>
+<p>建图打通后，进入 Navigation——让小车"拿着地图自己找路"：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 终端1：启动世界</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># 终端2：启动导航</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_navigation2<span class="w"> </span>navigation2.launch.py
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># 终端3：遥控（备选，导航时也可不用）</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
+</span></code></pre></div>
+<p>在 RViz 里用顶部 "2D Goal Pose" 按钮，在地图上点一个目标点，小车自己规划路径走过去。</p>
+<hr />
+<h2 id="_12">九、自查清单</h2>
+<ol>
+<li>仿真是什么？→ 电脑里的机器人练习场</li>
+<li>Gazebo 怎么造房间和小车？→ 读 .world/.sdf 配置文件</li>
+<li>房间图纸里 include 是什么意思？→ 引用模型库里的模型文件</li>
+<li>turtlebot3 要 clone 几个仓库？→ 两个：turtlebot3 + turtlebot3_simulations</li>
+<li>建图是什么原理？→ SLAM：边定位边建图</li>
+<li>为什么 WSL2 3D 卡？→ GPU 转译层开销；核显/软件渲染</li>
+<li>怎么切独显？→ <code>MESA_D3D12_DEFAULT_ADAPTER_NAME</code> 环境变量</li>
+<li>gzclient 崩了怎么办？→ 不用管，gzserver 活着就行</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Sheng
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../js/falling.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

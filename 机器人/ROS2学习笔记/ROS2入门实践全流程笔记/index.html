@@ -1,0 +1,3097 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sheng的个人网站">
+      
+      
+        <meta name="author" content="Sheng">
+      
+      
+        <link rel="canonical" href="https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/">
+      
+      
+        <link rel="prev" href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/FreeRTOS%E5%85%A5%E9%97%A8%E5%9F%B9%E8%AE%AD/">
+      
+      
+        <link rel="next" href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%201%EF%BC%89%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../img/favicon.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>入门实践全流程 - 追光小站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ros2" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光小站" class="md-header__button md-logo" aria-label="追光小站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光小站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              入门实践全流程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Shengwq/Shengwq.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My-repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+  
+
+  <!-- 全局黑胶唱片播放器 -->
+  <div id="vinyl-player" class="vinyl-player-instance">
+    <div id="vinyl-disk" class="vinyl-disk"></div>
+    <div id="play-btn" class="play-pause-btn paused"></div>
+  </div>
+
+  <!-- 隐藏的音频元素，loop 循环播放 -->
+  <audio id="bgm" loop>
+    <source src="../../../audio/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio   = document.getElementById('bgm');
+      const btn     = document.getElementById('play-btn');
+      const disk    = document.getElementById('vinyl-disk');
+
+      // ── 状态恢复：翻页后记住是否在播放 ──────────────────────
+      if (localStorage.getItem('bgm_playing') === 'true') {
+        audio.play().then(() => {
+          btn.classList.replace('paused', 'playing');
+          disk.style.animationPlayState = 'running';
+        }).catch(() => {
+          // 浏览器自动播放策略阻止时静默失败
+          localStorage.setItem('bgm_playing', 'false');
+        });
+      }
+
+      // ── 点击切换播放/暂停 ────────────────────────────────────
+      btn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play().then(() => {
+            btn.classList.replace('paused', 'playing');
+            disk.style.animationPlayState = 'running';
+            localStorage.setItem('bgm_playing', 'true');
+          }).catch(err => console.warn('播放失败:', err));
+        } else {
+          audio.pause();
+          btn.classList.replace('playing', 'paused');
+          disk.style.animationPlayState = 'paused';
+          localStorage.setItem('bgm_playing', 'false');
+        }
+      });
+
+      // ── 音频事件同步状态 ─────────────���───────────────────────
+      audio.addEventListener('play',  () => {
+        btn.classList.replace('paused', 'playing');
+        disk.style.animationPlayState = 'running';
+      });
+      audio.addEventListener('pause', () => {
+        btn.classList.replace('playing', 'paused');
+        disk.style.animationPlayState = 'paused';
+      });
+    });
+  </script>
+
+  
+  
+
+
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  嵌入式
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  机器人
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  思想垃圾
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  关于
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光小站" class="md-nav__button md-logo" aria-label="追光小站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    追光小站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Shengwq/Shengwq.github.io.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My-repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    嵌入式
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    嵌入式
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLDC的重要参数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%B5%8C%E5%85%A5%E5%BC%8F/FreeRTOS%E5%85%A5%E9%97%A8%E5%9F%B9%E8%AE%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS入门培训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器人
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS2学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ROS2学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门实践全流程
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门实践全流程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 0 章 环境准备：安装方式怎么选
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 0 章 环境准备：安装方式怎么选">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装步骤（实测流程）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装前置自查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        验证安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 1 章 创建工作空间：所有代码的家
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 2 章 创建功能包：ROS 的最小单位
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 3 章 第一个节点：发布者
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 3 章 第一个节点：发布者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 写代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 逐段读懂这份代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 注册入口点（新手最容易卡的一步）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 编译、生效、运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 4 章 核心概念：发布-订阅机制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 5 章 第二个节点：订阅者
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 5 章 第二个节点：订阅者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 写代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 注册入口点 + 编译
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 运行验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 6 章 服务：一问一答
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 6 章 服务：一问一答">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 服务端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 客户端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 注册 + 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 7 章 参数：节点的设置面板
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 7 章 参数：节点的设置面板">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 核心两行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 改造成可调参数的发布者
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 命令行操作参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 8 章 launch：一条命令启动所有节点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 8 章 launch：一条命令启动所有节点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 launch 文件长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 launch 传参数：启动时直接带上配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 launch 的两条铁律（重要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 9 章 为什么每次都要 source？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 10 章 常用命令速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 11 章 常见问题与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 12 章 概念速记
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%201%EF%BC%89%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 1：发布与订阅
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%202%EF%BC%89launch%20%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 2：launch启动文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E9%80%9F%E6%9F%A5%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念速查表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E4%B8%89%E4%B8%AA%E5%90%8D%E5%AD%97%EF%BC%9A%E5%8C%85%E5%90%8D%E3%80%81%E5%85%A5%E5%8F%A3%E5%90%8D%E3%80%81%E8%8A%82%E7%82%B9%E5%90%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三个名字：包名、入口名、节点名
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%95%88%EF%BC%9Acolcon%20build%20%E5%92%8C%20source%20%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编译与生效：colcon build和source
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E5%AE%9E%E6%88%98%EF%BC%9ATurtleBot3%20%E4%BB%BF%E7%9C%9F%E5%BB%BA%E5%9B%BE%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TurtleBot3仿真建图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    思想垃圾
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    思想垃圾
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E4%B9%96%E5%AD%A9%E5%AD%90%E8%AF%AF%E5%8C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    乖孩子误区
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E5%85%B3%E4%BA%8E%E8%8A%B1%E9%92%B1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于花钱
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E6%AF%8F%E6%97%A5%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    每日记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    关于
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于本站
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    更新日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 0 章 环境准备：安装方式怎么选
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 0 章 环境准备：安装方式怎么选">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装步骤（实测流程）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装前置自查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        验证安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 1 章 创建工作空间：所有代码的家
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 2 章 创建功能包：ROS 的最小单位
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 3 章 第一个节点：发布者
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 3 章 第一个节点：发布者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 写代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 逐段读懂这份代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 注册入口点（新手最容易卡的一步）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 编译、生效、运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 4 章 核心概念：发布-订阅机制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 5 章 第二个节点：订阅者
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 5 章 第二个节点：订阅者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 写代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 注册入口点 + 编译
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 运行验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 6 章 服务：一问一答
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 6 章 服务：一问一答">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 服务端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 客户端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 注册 + 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 7 章 参数：节点的设置面板
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 7 章 参数：节点的设置面板">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 核心两行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 改造成可调参数的发布者
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 命令行操作参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 8 章 launch：一条命令启动所有节点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第 8 章 launch：一条命令启动所有节点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 launch 文件长什么样
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 launch 传参数：启动时直接带上配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 launch 的两条铁律（重要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 9 章 为什么每次都要 source？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 10 章 常用命令速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 11 章 常见问题与排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 12 章 概念速记
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ros2">ROS2 入门实践全流程教程</h1>
+<blockquote>
+<p>适用环境：Windows + WSL2 + Ubuntu 22.04 + ROS2 Humble + Python
+读完你能做到：从零搭好环境，创建自己的功能包，写出发布、订阅、服务、参数四类节点，用 launch 一键启动，并理解它们背后的原理。</p>
+</blockquote>
+<p>如果你之前完全没接触过 ROS，不用怕。这篇教程假设你只会最基本的 Python 语法，每个概念都会先讲"它是什么、为什么存在"，再给代码，最后让你亲手跑起来。</p>
+<hr />
+<h2 id="_1">目录</h2>
+<ul>
+<li><a href="#chapter-0">第 0 章 环境准备：安装方式怎么选</a></li>
+<li><a href="#chapter-1">第 1 章 创建工作空间：所有代码的家</a></li>
+<li><a href="#chapter-2">第 2 章 创建功能包：ROS 的最小单位</a></li>
+<li><a href="#chapter-3">第 3 章 第一个节点：发布者</a></li>
+<li><a href="#chapter-4">第 4 章 核心概念：发布-订阅机制</a></li>
+<li><a href="#chapter-5">第 5 章 第二个节点：订阅者</a></li>
+<li><a href="#chapter-6">第 6 章 服务：一问一答</a></li>
+<li><a href="#chapter-7">第 7 章 参数：节点的设置面板</a></li>
+<li><a href="#chapter-8">第 8 章 launch：一条命令启动所有节点</a></li>
+<li><a href="#chapter-9">第 9 章 为什么每次都要 source？</a></li>
+<li><a href="#chapter-10">第 10 章 常用命令速查</a></li>
+<li><a href="#chapter-11">第 11 章 常见问题与排查</a></li>
+<li><a href="#chapter-12">第 12 章 概念速记</a></li>
+</ul>
+<hr />
+<h2 id="chapter-0">第 0 章 环境准备：安装方式怎么选</h2>
+<p>ROS2 官方支持 Ubuntu，Windows 用户有几种办法用上它。先看对比，再决定：</p>
+<table>
+<thead>
+<tr>
+<th>安装方式</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适合人群</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>双系统</strong></td>
+<td>性能最好，环境最纯净</td>
+<td>需重启切换，占硬盘空间，安装有风险</td>
+<td>长期重度开发</td>
+</tr>
+<tr>
+<td><strong>虚拟机</strong>（VMware/VirtualBox）</td>
+<td>完整 Linux 桌面，GUI 全功能</td>
+<td>性能损耗大，占内存，启动慢</td>
+<td>需要跑 Gazebo 等完整 3D 仿真</td>
+</tr>
+<tr>
+<td><strong>WSL2</strong>（Windows 子系统）</td>
+<td>轻量、启动快、免重启、与 Windows 无缝共享文件</td>
+<td>3D 仿真（Gazebo）性能一般</td>
+<td><strong>入门学习、写节点、跑小场景</strong></td>
+</tr>
+<tr>
+<td><strong>Docker 容器</strong></td>
+<td>环境隔离，官方镜像现成</td>
+<td>图形界面配置麻烦</td>
+<td>部署/复现他人环境</td>
+</tr>
+<tr>
+<td><strong>云服务器 / 在线环境</strong></td>
+<td>零本地安装，随时可用</td>
+<td>有网络延迟，需要付费或注册</td>
+<td>快速体验、临时学习</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本文选择 WSL2</strong>。它不需要重启切换系统，内存占用小，文件与 Windows 互通（在 Ubuntu 里访问 <code>/mnt/c/</code> 就能直接读写 C 盘），还能和 VS Code、MATLAB 等 Windows 工具共存。等以后需要完整 3D 仿真或真机部署时，再考虑虚拟机或开发板。</p>
+<h3 id="_2">安装步骤（实测流程）</h3>
+<p>以管理员身份打开 PowerShell，依次执行：</p>
+<p><strong>第 1 步：启用 WSL 并安装默认发行版</strong></p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
+</span></code></pre></div>
+<p><strong>第 2 步：安装 Ubuntu 22.04</strong></p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span> <span class="n">-d</span> <span class="n">Ubuntu</span><span class="p">-</span><span class="n">22</span><span class="p">.</span><span class="n">04</span>
+</span></code></pre></div>
+<p>完成后按提示重启电脑，并设置 Ubuntu 的用户名和密码（这个用户名要记住，后面很多路径会用到）。</p>
+<p><strong>第 3 步：安装 ROS2（鱼香ROS 一键脚本）</strong></p>
+<p>打开 Ubuntu 终端（开始菜单里搜索 Ubuntu），执行：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wget<span class="w"> </span>http://fishros.com/install<span class="w"> </span>-O<span class="w"> </span>fishros<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>bash<span class="w"> </span>fishros
+</span></code></pre></div>
+<p>运行后按脚本提示选择安装内容（选 ROS2 及对应版本，如 Humble），脚本会自动完成 ROS2 的安装与环境配置。</p>
+<blockquote>
+<p>鱼香ROS（FishROS）是中文 ROS 社区常用的一键安装工具，对国内网络友好，省去了手动配置软件源和逐项安装依赖的步骤。</p>
+</blockquote>
+<h3 id="_3">安装前置自查</h3>
+<p>装之前确认两件事，否则可能装到一半出问题：</p>
+<ul>
+<li><strong>Windows 版本</strong>：Win10 21H2 或 Win11</li>
+<li><strong>虚拟化已开启</strong>：任务管理器 → 性能 → CPU → 看右下角"虚拟化"是否显示"已启用"。没开启的话需要进 BIOS 打开 VT-x / AMD-V</li>
+</ul>
+<h3 id="_4">验证安装</h3>
+<p>装好后打开 Ubuntu 终端，执行：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/*/setup.bash
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$ROS_DISTRO</span>
+</span></code></pre></div>
+<p>能看到 <code>humble</code>（或对应版本名）说明 ROS2 已经可用，可以进入下一章了。</p>
+<hr />
+<h2 id="chapter-1">第 1 章 创建工作空间：所有代码的家</h2>
+<p>工作空间（Workspace）就是存放所有功能包的"大文件夹"。你的所有 ROS 项目代码都会放在这里。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ros2_ws/src
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+</span></code></pre></div>
+<p>创建后目录里会有几个文件夹，各司其职：</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/</code></td>
+<td>放源码包（你写的代码都在这）</td>
+</tr>
+<tr>
+<td><code>build/</code></td>
+<td>编译的中间产物（不用管）</td>
+</tr>
+<tr>
+<td><code>install/</code></td>
+<td>编译好的成品（系统从这里找你的包）</td>
+</tr>
+<tr>
+<td><code>log/</code></td>
+<td>编译日志（出错时来这里查）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>src/</code> 是你自己创建的，<code>build/</code>、<code>install/</code>、<code>log/</code> 会在你编译后自动生成。</p>
+</blockquote>
+<hr />
+<h2 id="chapter-2">第 2 章 创建功能包：ROS 的最小单位</h2>
+<p>功能包（Package）是 ROS 代码的最小组织单位，可以理解成一个"项目文件夹"。一个包里放着一组相关的节点和配置。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>--build-type<span class="w"> </span>ament_python<span class="w"> </span>motor_demo
+</span></code></pre></div>
+<p>这条命令创建了一个叫 <code>motor_demo</code> 的 Python 包。创建后的结构：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>motor_demo/
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── setup.py          # 打包配置 + 入口点注册（重点，后面细讲）
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>├── package.xml       # 包的信息和依赖
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>├── resource/         # 资源标记
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>└── motor_demo/       # Python 源码目录（与包同名）
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    └── __init__.py
+</span></code></pre></div>
+<blockquote>
+<p>⚠️ 注意这里有个<strong>同名嵌套目录</strong>：外层 <code>motor_demo/</code> 是 ROS 功能包（<code>package.xml</code> 所在），内层 <code>motor_demo/motor_demo/</code> 是 Python 源码目录（<code>.py</code> 文件所在）。两个 <code>motor_demo</code> 含义不同，新手经常在这里绕晕，后面讲 <code>setup.py</code> 时会再遇到。</p>
+</blockquote>
+<hr />
+<h2 id="chapter-3">第 3 章 第一个节点：发布者</h2>
+<p>现在开始写第一个节点。我们会模拟一台"电机编码器"，每隔 0.1 秒发布一次当前速度值。</p>
+<h3 id="31">3.1 写代码</h3>
+<p>文件：<code>motor_demo/motor_demo/publisher_node.py</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>                      <span class="c1"># ROS 本体</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>       <span class="c1"># 节点工具</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Float64</span>  <span class="c1"># 消息类型：一个浮点数</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>                     <span class="c1"># 随机数工具</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">MotorEncoderPublisher</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>            <span class="c1"># 定义节点，继承自 Node</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;motor_encoder_publisher&#39;</span><span class="p">)</span>  <span class="c1"># 给节点起名</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>        <span class="c1"># 创建发布者：往 /motor/velocity 话题发 Float64 消息</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;/motor/velocity&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        <span class="c1"># 创建定时器：每 0.1 秒执行一次 timer_callback</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer_callback</span><span class="p">)</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.0</span>                    <span class="c1"># 速度初始值</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">timer_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                 <span class="c1"># 闹钟响时干活</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>  <span class="c1"># 加个小随机数，模拟真实波动</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="n">Float64</span><span class="p">()</span>                       <span class="c1"># 造一个消息</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span>              <span class="c1"># 把速度值放进去</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>           <span class="c1"># 发布出去</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>                     <span class="c1"># 启动 ROS 系统</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">MotorEncoderPublisher</span><span class="p">()</span>            <span class="c1"># 创建节点</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>                          <span class="c1"># 让节点持续运行，等闹钟响</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="32">3.2 逐段读懂这份代码</h3>
+<p>代码不复杂，一共就五块，每一块对应一个职责：</p>
+<table>
+<thead>
+<tr>
+<th>代码块</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>import ...</code></td>
+<td>从工具箱拿工具。前三行是 ROS 的，<code>random</code> 是 Python 自带的随机数工具</td>
+</tr>
+<tr>
+<td><code>class MotorEncoderPublisher(Node)</code> + <code>__init__</code></td>
+<td>定义节点、起名字。<code>super().__init__('xxx')</code> 里的字符串就是<strong>节点名</strong></td>
+</tr>
+<tr>
+<td><code>create_publisher(Float64, '/motor/velocity', 10)</code></td>
+<td>造一个"发布器"，声明"我要往这个话题发一个浮点数"。三个参数：消息类型、话题名、缓冲区</td>
+</tr>
+<tr>
+<td><code>create_timer(0.1, self.timer_callback)</code></td>
+<td>造一个"定时器"，每 0.1 秒自动调用一次回调函数</td>
+</tr>
+<tr>
+<td><code>main()</code> + <code>if __name__ == '__main__'</code></td>
+<td>程序入口。<code>rclpy.spin(node)</code> 让节点一直运行，直到你按 Ctrl+C</td>
+</tr>
+</tbody>
+</table>
+<p>两个暂时不用深究、但先认识的点：</p>
+<p><strong>话题名为什么带斜杠 <code>/motor/velocity</code>？</strong>
+斜杠表示<strong>层级结构</strong>，就像文件夹路径。<code>/motor/velocity</code> 的意思是"motor 这个设备下的 velocity 数据"。以后话题多了能整齐分类：<code>/motor/velocity</code>、<code>/motor/position</code>、<code>/imu/accel</code>……一眼看出每个话题属于哪个设备。开头的 <code>/</code> 表示"全局话题"，规范的话题都从 <code>/</code> 开始。</p>
+<p><strong>缓冲区 10 是什么？</strong>
+消息会先排进"最多装 10 条"的队列再发出。如果接收方处理慢了，新消息会<strong>挤掉最旧的消息</strong>，不会无限堆积。为什么这样设计？因为对速度这类实时数据来说，"最新的值"比"一堆积压的旧值"有用得多——宁可丢旧保新。</p>
+<h3 id="33">3.3 注册入口点（新手最容易卡的一步）</h3>
+<p>直接运行 <code>ros2 run motor_demo publisher_node</code> 会报 "No executable found"。原因是：新建的 Python 包默认<strong>没有注册可执行入口</strong>，ROS 不知道 <code>publisher_node</code> 这个命令对应哪个文件。</p>
+<p>打开 <code>motor_demo/setup.py</code>，找到 <code>entry_points</code>：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="s1">&#39;publisher_node = motor_demo.publisher_node:main&#39;</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        <span class="c1">#   ↑入口名(ros2 run敲的) ↑定位路径: 源码目录.文件名:函数</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="p">],</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">},</span>
+</span></code></pre></div>
+<p>这行 <code>'publisher_node = motor_demo.publisher_node:main'</code> 是一个<strong>定位地址</strong>，拆开看：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>motor_demo  .  publisher_node  :  main
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>   ↑            ↑                ↑
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Python包名     Python文件名      函数名
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>（源码目录）   （不含 .py）       （程序入口）
+</span></code></pre></div>
+<p>翻译成大白话：<strong>"到 motor_demo 这个源码目录里，打开 publisher_node.py 这个文件，从它的 main() 函数开始跑。"</strong></p>
+<p>这里再次出现两个 <code>motor_demo</code>，含义不同：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>~/ros2_ws/src/motor_demo/            # 外层：ROS 功能包（package.xml 所在）
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>~/ros2_ws/src/motor_demo/motor_demo/ # 内层：Python 源码目录（.py 所在）
+</span></code></pre></div>
+<p><code>ros2 run</code> 里的 <code>motor_demo</code> 是外层 ROS 功能包名；<code>:main</code> 左边的 <code>motor_demo</code> 是内层 Python 包名。两者恰好同名，是 ament_python 的默认结构。</p>
+<h3 id="34">3.4 编译、生效、运行</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>colcon<span class="w"> </span>build
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>publisher_node
+</span></code></pre></div>
+<p>运行后终端会不断打印 <code>发布速度: x.xxx rad/s</code>，数字一直在变——因为每 0.1 秒在旧值上加了一个小随机数，模拟真实电机的转速波动。按 Ctrl+C 停止。</p>
+<hr />
+<h2 id="chapter-4">第 4 章 核心概念：发布-订阅机制</h2>
+<p>跑通了第一个节点，现在把背后的机制讲透。ROS 的一切都建立在<strong>发布-订阅</strong>之上：</p>
+<blockquote>
+<p><strong>一个节点把数据"喊出来"（发布），其他节点能"听到"（订阅）。喊的内容叫"话题"，话题里传的数据叫"消息"。</strong></p>
+</blockquote>
+<p>三个核心概念：</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>通俗理解</th>
+<th>代码里的对应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>节点 Node</strong></td>
+<td>一个独立干活的小程序</td>
+<td><code>class ...(Node)</code></td>
+</tr>
+<tr>
+<td><strong>话题 Topic</strong></td>
+<td>一条广播频道，谁都能听</td>
+<td><code>'/motor/velocity'</code></td>
+</tr>
+<tr>
+<td><strong>消息 Message</strong></td>
+<td>频道里传的数据格式</td>
+<td><code>Float64</code>（一个数）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>精髓在于"解耦"</strong>：喊话的人和听话的人<strong>互不认识</strong>，只通过频道名对接。发布者不知道谁在听，订阅者也不知道谁在喊。这样好处很大——以后加 10 个节点，只要都知道频道名，就能自由互通，互不影响。</p>
+<p>打个比方：</p>
+<blockquote>
+<p><strong>发布者 = 邮递员</strong>，每 10 分钟准时送一封信（不管收件人在不在）。
+<strong>订阅者 = 家门口的信箱</strong>，听到"咚"一声才去取信。它不主动去问"有信没"，信来了自然触发它去取。</p>
+</blockquote>
+<p>这个"信来了自动执行"的机制，就是<strong>回调（Callback）</strong>——ROS 的核心异步机制。你不用写循环去轮询，只管"定义好到时候该干什么"，ROS 负责"什么时候叫醒你"。</p>
+<p>发布者和订阅者的触发方式对比：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>发布者</th>
+<th>订阅者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>触发方式</td>
+<td>闹钟定时（timer）</td>
+<td>监听器待命（subscription）</td>
+</tr>
+<tr>
+<td>动作</td>
+<td>主动喊话</td>
+<td>被动接收</td>
+</tr>
+<tr>
+<td>回调函数</td>
+<td><code>timer_callback</code></td>
+<td><code>listener_callback</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="chapter-5">第 5 章 第二个节点：订阅者</h2>
+<p>现在写一个订阅者，监听 <code>/motor/velocity</code> 话题，把收到的速度打印出来——这就是你的程序真正在"听"了。</p>
+<h3 id="51">5.1 写代码</h3>
+<p>文件：<code>motor_demo/motor_demo/subscriber_node.py</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Float64</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">MotorSubscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;motor_subscriber&#39;</span><span class="p">)</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="c1"># 创建订阅者：监听 /motor/velocity，来消息自动调 listener_callback</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>            <span class="n">Float64</span><span class="p">,</span>                  <span class="c1"># 消息类型（必须与发布者一致）</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>            <span class="s1">&#39;/motor/velocity&#39;</span><span class="p">,</span>        <span class="c1"># 话题名（必须与发布者一致）</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">listener_callback</span><span class="p">,</span>   <span class="c1"># 收到消息后执行的函数</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>            <span class="mi">10</span>                        <span class="c1"># 缓冲区</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>        <span class="p">)</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">listener_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>        <span class="c1"># 有消息来了，自动执行这里</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;收到速度: </span><span class="si">{</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> rad/s&#39;</span><span class="p">)</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">MotorSubscriber</span><span class="p">()</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>    <span class="n">node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<p>注意和发布者的一个关键区别：<strong>发布者用 <code>timer</code>（定时器）主动喊，订阅者用 <code>subscription</code>（订阅器）被动等</strong>。订阅者没有定时器，它只"挂着"，消息一来自动触发回调。</p>
+<p><strong>硬性要求</strong>：订阅方和发布方必须<strong>话题名一致</strong>（都是 <code>/motor/velocity</code>）+ <strong>消息类型一致</strong>（都是 <code>Float64</code>），否则频道对不上，谁也听不到谁。</p>
+<h3 id="52">5.2 注册入口点 + 编译</h3>
+<p>在 <code>setup.py</code> 的 <code>console_scripts</code> 里<strong>追加</strong>一行：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="s1">&#39;subscriber_node = motor_demo.subscriber_node:main&#39;</span><span class="p">,</span>
+</span></code></pre></div>
+<blockquote>
+<p>⚠️ <strong>新增入口点后必须重新 source</strong>，否则会报 "No executable found"。原因见第 9 章。</p>
+</blockquote>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>colcon<span class="w"> </span>build
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span></code></pre></div>
+<h3 id="53">5.3 运行验证</h3>
+<p>开两个终端：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 终端1：发布者</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>publisher_node
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># 终端2：订阅者</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>subscriber_node
+</span></code></pre></div>
+<p>终端2 会不断打印 <code>收到速度: x.xxx rad/s</code>，数值和终端1 发布的一致——发布-订阅闭环跑通了。</p>
+<p>配套命令行工具（不用写代码就能观察系统）：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w">                       </span><span class="c1"># 查看运行中的节点</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w">                      </span><span class="c1"># 查看所有话题</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/motor/velocity<span class="w">      </span><span class="c1"># 命令行直接&quot;监听&quot;某个话题</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/motor/velocity<span class="w">      </span><span class="c1"># 查看话题信息</span>
+</span></code></pre></div>
+<hr />
+<h2 id="chapter-6">第 6 章 服务：一问一答</h2>
+<p>话题适合"持续不断的数据流"，但有些场景需要<strong>一问一答</strong>：你问一个问题，马上拿到一个结果。比如"现在温度多少？""帮我算一下 1+1"。这时候用<strong>服务（Service）</strong>。</p>
+<p>打个比方：话题是<strong>广播</strong>，服务是<strong>打电话</strong>——客户端打进来，服务端接听回答；服务端永远不会主动打电话给客户端。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>话题</th>
+<th>服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>角色</td>
+<td>发布者 → 订阅者</td>
+<td>客户端 → 服务端</td>
+</tr>
+<tr>
+<td>数据方向</td>
+<td>单向广播</td>
+<td>双向：请求 + 响应</td>
+</tr>
+<tr>
+<td>触发</td>
+<td>定时/来消息</td>
+<td>客户端主动发问</td>
+</tr>
+<tr>
+<td>典型场景</td>
+<td>传感器数据流</td>
+<td>查询/计算/设置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="61">6.1 服务端</h3>
+<p>服务端负责"接电话、回答问题"。下面这个服务端提供加法：客户端发来 <code>a</code> 和 <code>b</code>，它返回 <code>sum = a + b</code>。</p>
+<p>文件：<code>motor_demo/motor_demo/add_service.py</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">example_interfaces.srv</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddTwoInts</span>   <span class="c1"># 现成的&quot;加法服务&quot;消息类型</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">AddService</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;add_service&#39;</span><span class="p">)</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">srv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>            <span class="n">AddTwoInts</span><span class="p">,</span>       <span class="c1"># 服务消息类型</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>            <span class="s1">&#39;add_two_ints&#39;</span><span class="p">,</span>   <span class="c1"># 服务名</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">add_callback</span> <span class="c1"># 收到请求时执行的函数</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>        <span class="p">)</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>        <span class="n">response</span><span class="o">.</span><span class="n">sum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">request</span><span class="o">.</span><span class="n">b</span>   <span class="c1"># 计算答案放进 response</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">a</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">b</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">sum</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>        <span class="k">return</span> <span class="n">response</span>       <span class="c1"># 把答案还回去（服务的关键）</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">AddService</span><span class="p">()</span>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<p>和订阅回调的区别：订阅回调只有 <code>msg</code>（只收不回）；<strong>服务回调有 <code>request</code> + <code>response</code> 两个参数</strong>（收问题、填答案），最后 <code>return response</code> 把答案还回去。</p>
+<h3 id="62">6.2 客户端</h3>
+<p>客户端负责"拨电话、问问题"。这个客户端会自动问 <code>3 + 5 = ?</code>。</p>
+<p>文件：<code>motor_demo/motor_demo/client_node.py</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">example_interfaces.srv</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddTwoInts</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">AddClient</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;add_client&#39;</span><span class="p">)</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">&#39;add_two_ints&#39;</span><span class="p">)</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>        <span class="c1"># 等待服务端上线（对方没接就一直等）</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;等待服务端上线...&#39;</span><span class="p">)</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>        <span class="c1"># 构造请求</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">req</span> <span class="o">=</span> <span class="n">AddTwoInts</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>   <span class="c1"># 注意：存到 self 上，回调才能访问</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">req</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">req</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>        <span class="c1"># 异步发请求，答案到了触发回调</span>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">call_async</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">req</span><span class="p">)</span>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_callback</span><span class="p">)</span>
+</span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">response_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">):</span>
+</span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-18-25"><a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;收到答案: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">req</span><span class="o">.</span><span class="n">a</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">req</span><span class="o">.</span><span class="n">b</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">sum</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-18-26"><a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>
+</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-18-28"><a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-18-29"><a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">AddClient</span><span class="p">()</span>
+</span><span id="__span-18-30"><a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</span><span id="__span-18-31"><a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</span><span id="__span-18-32"><a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>
+</span><span id="__span-18-33"><a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-18-34"><a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<p>客户端有三步，对应"打电话"的三个动作：</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>对应动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wait_for_service()</code></td>
+<td>拨号前确认对方在不在。服务端和客户端是独立启动的，客户端先跑时服务端可能还不存在，所以要等</td>
+</tr>
+<tr>
+<td><code>call_async()</code></td>
+<td>发请求（异步：发出去就返回，不等答案）</td>
+</tr>
+<tr>
+<td><code>add_done_callback()</code></td>
+<td>答案到了自动执行回调（和订阅回调思想一样，只是触发条件从"来消息"变成"答案到了"）</td>
+</tr>
+</tbody>
+</table>
+<p>两个细节：
+- <code>self.req</code> 为什么要加 <code>self.</code>？因为回调函数和 <code>__init__</code> 是两个函数，函数里定义的局部变量跨函数就消失了，必须存到 <code>self</code> 上才能共享。<strong>规律：<code>self.xxx</code> = 节点随身携带的属性，任何回调都能访问。</strong>
+- <code>future</code> 可以理解成"回执单"：<code>call_async</code> 先给你一张空单子，答案到了才填进去，然后触发回调。</p>
+<h3 id="63">6.3 注册 + 运行</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="s1">&#39;add_service = motor_demo.add_service:main&#39;</span><span class="p">,</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="s1">&#39;client_node = motor_demo.client_node:main&#39;</span><span class="p">,</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span></code></pre></div>
+<p>开三个终端：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 终端1：服务端</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>add_service
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># 终端2：代码客户端（自动问 3+5）</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>client_node
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># 终端3：命令行客户端（手动问 8+12）</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/add_two_ints<span class="w"> </span>example_interfaces/srv/AddTwoInts<span class="w"> </span><span class="s2">&quot;{a: 8, b: 12}&quot;</span>
+</span></code></pre></div>
+<p>预期：终端1 打印两次加法结果（<code>3 + 5 = 8</code> 和 <code>8 + 12 = 20</code>），终端2 打印"收到答案: 8"，终端3 返回 <code>sum: 20</code>。</p>
+<hr />
+<h2 id="chapter-7">第 7 章 参数：节点的设置面板</h2>
+<p>有些值需要"时不时调一下"，比如报警阈值、发布频率、电机名字。如果每次都改代码、重新编译，太麻烦了。ROS 用<strong>参数（Parameter）</strong>解决这个问题：参数是节点的"设置面板"，<strong>运行中可以直接改，不用改代码、不用重启</strong>。</p>
+<h3 id="71">7.1 核心两行</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;noise_range&#39;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>   <span class="c1"># 声明参数 + 默认值</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;noise_range&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># 读取参数（.value 不能漏）</span>
+</span></code></pre></div>
+<ul>
+<li><code>declare_parameter</code>：<strong>声明</strong>参数。必须先用这个，ROS 才知道有这个参数存在</li>
+<li><code>get_parameter(...).value</code>：<strong>读取</strong>参数当前值。<code>.value</code> 不能漏，漏了拿到的是对象而不是数字</li>
+</ul>
+<blockquote>
+<p>⚠️ <code>declare_parameter</code> 必须在 <code>super().__init__()</code> <strong>之后</strong>调用。因为 <code>super().__init__()</code> 负责完成节点的初始化（包括参数系统），没初始化就用参数会报 <code>AttributeError: no attribute '_parameter_overrides'</code>。</p>
+</blockquote>
+<h3 id="72">7.2 改造成可调参数的发布者</h3>
+<p>把第 3 章的发布者改造一下，让"速度波动范围"变成参数：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Float64</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">MotorEncoderPublisher</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;motor_encoder_publisher&#39;</span><span class="p">)</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>        <span class="c1"># 声明参数：名字 noise_range，默认 0.05</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;noise_range&#39;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;/motor/velocity&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer_callback</span><span class="p">)</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">timer_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>        <span class="c1"># 每次回调都重新读参数，保证 ros2 param set 立即生效</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>        <span class="n">noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;noise_range&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">noise</span><span class="p">,</span> <span class="n">noise</span><span class="p">)</span>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="n">Float64</span><span class="p">()</span>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>        <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">MotorEncoderPublisher</span><span class="p">()</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="73">7.3 命令行操作参数</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># 先跑起来</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>motor_demo<span class="w"> </span>publisher_node
+</span></code></pre></div>
+<p>另一个终端：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>/motor_encoder_publisher<span class="w">              </span><span class="c1"># 查看所有参数</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/motor_encoder_publisher<span class="w"> </span>noise_range<span class="w">   </span><span class="c1"># 查看某个参数</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>ros2<span class="w"> </span>param<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/motor_encoder_publisher<span class="w"> </span>noise_range<span class="w"> </span><span class="m">2</span>.0<span class="w">  </span><span class="c1"># 运行中修改参数</span>
+</span></code></pre></div>
+<p>改完之后，第一个终端里速度的波动会立刻变大——参数的意义就在这里：<strong>不停程序、不改代码、动态调配置</strong>。</p>
+<blockquote>
+<p>⚠️ 参数是<strong>被动</strong>的：<code>param set</code> 只改了参数库里的值，节点必须<strong>主动重新 <code>get_parameter</code></strong> 才能拿到新值。所以回调里要每次现读（上面代码就是这么写的）。如果只在 <code>__init__</code> 里读一次存起来，那 <code>param set</code> 后节点还抱着旧值，波动不会有变化——这是个很常见的坑。</p>
+</blockquote>
+<hr />
+<h2 id="chapter-8">第 8 章 launch：一条命令启动所有节点</h2>
+<p>前面跑发布-订阅时，你要手动开两个终端。节点一多（5 个、10 个），手动开一堆终端又累又容易乱。<strong>launch 文件</strong>就是来解决这个的：一条命令<strong>同时启动多个节点</strong>。</p>
+<h3 id="81-launch">8.1 launch 文件长什么样</h3>
+<p>ROS2 的 launch 文件是一个 <strong>Python 文件</strong>，后缀 <code>.launch.py</code>，放在包的 <code>launch/</code> 目录里。</p>
+<p><strong>第 1 步：建目录 + 写文件</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ros2_ws/src/motor_demo/launch
+</span></code></pre></div>
+<p>文件：<code>~/ros2_ws/src/motor_demo/launch/demo.launch.py</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>        <span class="c1"># 同时启动发布者</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>        <span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;motor_demo&#39;</span><span class="p">,</span>        <span class="c1"># 包名</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;publisher_node&#39;</span><span class="p">,</span> <span class="c1"># 入口名（setup.py 里注册的）</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pub_node&#39;</span><span class="p">,</span>             <span class="c1"># 给节点起个别名（可选）</span>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>            <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>              <span class="c1"># 日志打印到屏幕</span>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>        <span class="p">),</span>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>        <span class="c1"># 同时启动订阅者</span>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>        <span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;motor_demo&#39;</span><span class="p">,</span>
+</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;subscriber_node&#39;</span><span class="p">,</span>
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sub_node&#39;</span><span class="p">,</span>
+</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>            <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>
+</span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>        <span class="p">),</span>
+</span><span id="__span-27-20"><a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>    <span class="p">])</span>
+</span></code></pre></div>
+<p><strong>第 2 步：逐段讲懂</strong></p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>from launch import LaunchDescription</code></td>
+<td>引入"启动描述"工具</td>
+</tr>
+<tr>
+<td><code>from launch_ros.actions import Node</code></td>
+<td>引入"启动一个 ROS 节点"的动作</td>
+</tr>
+<tr>
+<td><code>generate_launch_description()</code></td>
+<td><strong>固定函数名</strong>，ROS 启动器专门找这个函数</td>
+</tr>
+<tr>
+<td><code>Node(package=..., executable=..., ...)</code></td>
+<td>描述"要启动哪个包里的哪个入口"，跟你 <code>ros2 run 包名 入口名</code> 一样</td>
+</tr>
+<tr>
+<td><code>output='screen'</code></td>
+<td>让节点的打印输出显示在终端（不加这个默认不显示日志）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心认知</strong>：launch 文件里的每一个 <code>Node(...)</code>，就相当于你手动敲的一条 <code>ros2 run</code>。一条 launch 能替代 N 条手动命令。</p>
+<p><strong>第 3 步：注册 launch（在 setup.py 里声明）</strong></p>
+<p>launch 文件不是自动被识别的，需要告诉打包系统"这个文件要装进去"。打开 <code>setup.py</code>，修改两处：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># ① 顶部 import 区加这两行（如果还没有）：</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="c1"># ② 在 data_files 里加上 launch 目录（找到现有 data_files 段，把新行追加进去，别覆盖原内容）：</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="n">data_files</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>    <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="s1">&#39;motor_demo&#39;</span><span class="p">,</span> <span class="s1">&#39;launch&#39;</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;launch/*.launch.py&#39;</span><span class="p">)),</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="p">]</span>
+</span></code></pre></div>
+<blockquote>
+<p>这两处属于"配置声明"：告诉打包系统"除了 Python 代码，还有 launch 文件要一起装进 install/"。照抄模板即可，不需要深究原理。</p>
+</blockquote>
+<p><strong>第 4 步：编译 + 运行</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>colcon<span class="w"> </span>build
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>motor_demo<span class="w"> </span>demo.launch.py
+</span></code></pre></div>
+<p>发布者和订阅者<strong>同时跑起来了</strong>。用 <code>ros2 node list</code>（在另一个终端敲）会看到 <code>pub_node</code> 和 <code>sub_node</code>。</p>
+<h3 id="82-launch">8.2 launch 传参数：启动时直接带上配置</h3>
+<p>很多参数是<strong>启动时就该定好的</strong>（比如报警阈值）。在 launch 里传，启动即生效，不用运行后再敲 <code>param set</code>。</p>
+<p>在 <code>Node(...)</code> 里加一个 <code>parameters</code> 字段，用<strong>字典</strong>传：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">Node</span><span class="p">(</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;motor_demo&#39;</span><span class="p">,</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;publisher_node&#39;</span><span class="p">,</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pub_node&#39;</span><span class="p">,</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>    <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;noise_range&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">}]</span>   <span class="c1"># 启动时直接设置参数</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="p">),</span>
+</span></code></pre></div>
+<p><strong>拆解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parameters=[...]</code></td>
+<td><code>Node()</code> 专门用来传参数的字段</td>
+</tr>
+<tr>
+<td><code>{...}</code></td>
+<td>Python <strong>字典</strong>：参数名 → 参数值</td>
+</tr>
+<tr>
+<td><code>'noise_range': 2.0</code></td>
+<td>把 <code>noise_range</code> 启动时设成 2.0</td>
+</tr>
+</tbody>
+</table>
+<p>验证：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>motor_demo<span class="w"> </span>demo.launch.py
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># 另一个终端：</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/pub_node<span class="w"> </span>noise_range<span class="w">    </span><span class="c1"># 注意节点名是 pub_node（launch 里 name 改写）</span>
+</span></code></pre></div>
+<p>预期输出 <code>2.0</code>。</p>
+<p><strong>三个设置参数的时机对比</strong>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>代码里 declare 的 0.05   →  默认值（兜底）
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>launch 里 parameters 的 2.0  →  启动时覆盖
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>运行中 param set  →  再覆盖
+</span></code></pre></div>
+<p>优先级：<strong>运行中 set &gt; launch 传参 &gt; 代码默认值</strong>。</p>
+<h3 id="83-launch">8.3 launch 的两条铁律（重要）</h3>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>launch 占终端</strong></td>
+<td>启动后该终端被占用，要敲命令必须<strong>另开终端</strong></td>
+</tr>
+<tr>
+<td><strong>Ctrl+C 全杀</strong></td>
+<td>退出 launch = 它启动的所有节点一起停止</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>常见误区：在 launch 运行的终端里敲 <code>ros2 node list</code>，会"没反应"——不是节点没启动，而是 launch 占着这个终端，你的命令根本没执行。<strong>"看节点"永远要在另一个终端做。</strong></p>
+</blockquote>
+<hr />
+<h2 id="chapter-9">第 9 章 为什么每次都要 source？</h2>
+<p><code>colcon build</code> 和 <code>source install/setup.bash</code> 每次都一起敲，它们到底各自干什么？能不能少敲一个？</p>
+<p>先看各自的作用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>干什么</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colcon build</code></td>
+<td>把你写的代码<strong>翻译</strong>成机器能运行的文件，放进 <code>install/</code></td>
+<td><strong>做好外卖放进柜子</strong></td>
+</tr>
+<tr>
+<td><code>source install/setup.bash</code></td>
+<td>把"新东西在哪"这个信息<strong>告诉当前终端</strong></td>
+<td><strong>外卖员告诉你柜子在哪</strong></td>
+</tr>
+</tbody>
+</table>
+<p>关键区别：<strong>编译是"制造"，source 是"指路"。</strong> 编译只是把东西做好了，但当前终端默认不知道"外卖柜"在哪——ROS 只认识它原本就知道的几个位置。你新编译的包在一个系统"眼生"的地方，必须 source 一下告诉它"东西在这"。</p>
+<p><strong>为什么每次新开终端都要重新 source？</strong> 因为环境变量不是永久的，它只活在"当前终端"里：</p>
+<ul>
+<li>环境变量 = 一张"地址纸条"，写着去哪找 ROS 的东西</li>
+<li>source 一次 = 把纸条贴在这条终端上</li>
+<li><strong>关掉终端，纸条就没了</strong> → 新终端是一张白纸，又不知道地址了</li>
+</ul>
+<p>验证一下，加深理解：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># 先 source 过的终端</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>motor_demo<span class="w">    </span><span class="c1"># 能看到 motor_demo</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="c1"># 新开一个终端（没 source）</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>motor_demo<span class="w">    </span><span class="c1"># 看不到！因为新终端是&quot;白纸&quot;</span>
+</span></code></pre></div>
+<p>之前遇到的 <code>ros2 run</code> 报 "No executable found"，表面看是"找不到入口"，本质是——<strong>ROS 根本没找到你的包</strong>，因为你 build 完没 source，系统不知道 <code>motor_demo</code> 存在。</p>
+<p><strong>什么情况下 build 后必须重新 source？</strong></p>
+<table>
+<thead>
+<tr>
+<th>你做了什么</th>
+<th>需要重新 source 吗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只改 <code>.py</code> 文件里的代码逻辑</td>
+<td>❌ 不用（build 完直接跑）</td>
+</tr>
+<tr>
+<td><strong>改 <code>setup.py</code> 的入口点</strong></td>
+<td>✅ <strong>必须</strong></td>
+</tr>
+<tr>
+<td><strong>新建一个包</strong></td>
+<td>✅ <strong>必须</strong></td>
+</tr>
+</tbody>
+</table>
+<p>原因：改代码只是"更新旧东西"（位置没变，终端已经知道在哪）；新增入口/新包是"引入新东西"（环境变量里还没有它），必须重新 source 才被发现。</p>
+<p><strong>规律</strong>：改代码 → <code>colcon build</code> → （改入口/新包才需）<code>source</code> → <code>ros2 run</code>。缺一不可，顺序也别颠倒。</p>
+<p>如果嫌麻烦，可以把 source 写进 <code>~/.bashrc</code>（每个新终端自动执行），一劳永逸，见第 12 章的自动化配置。</p>
+<hr />
+<h2 id="chapter-10">第 10 章 常用命令速查</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># 工作空间 / 包</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>colcon<span class="w"> </span>build<span class="w">                          </span><span class="c1"># 编译（必须 cd 到工作空间根目录）</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash<span class="w">             </span><span class="c1"># 让终端认识编译产物</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>包名<span class="w">             </span><span class="c1"># 查看包是否存在</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="c1"># 节点</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w">                        </span><span class="c1"># 查看运行节点</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>ros2<span class="w"> </span>run<span class="w"> </span>包名<span class="w"> </span>入口名<span class="w">                  </span><span class="c1"># 运行节点</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="c1"># 话题</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w">                       </span><span class="c1"># 列出所有话题</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>话题名<span class="w">                </span><span class="c1"># 监听某个话题</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>话题名<span class="w">                </span><span class="c1"># 查看话题信息</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="c1"># 服务</span>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>ros2<span class="w"> </span>service<span class="w"> </span>list<span class="w">                     </span><span class="c1"># 查看所有服务</span>
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>服务名<span class="w"> </span>类型<span class="w"> </span><span class="s2">&quot;{参数}&quot;</span><span class="w">  </span><span class="c1"># 命令行调用服务</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="c1"># 参数</span>
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>节点名<span class="w">                </span><span class="c1"># 查看节点所有参数</span>
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>节点名<span class="w"> </span>参数名<span class="w">          </span><span class="c1"># 读取参数</span>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>ros2<span class="w"> </span>param<span class="w"> </span><span class="nb">set</span><span class="w"> </span>节点名<span class="w"> </span>参数名<span class="w"> </span>值<span class="w">       </span><span class="c1"># 修改参数</span>
+</span><span id="__span-34-23"><a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>
+</span><span id="__span-34-24"><a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="c1"># launch</span>
+</span><span id="__span-34-25"><a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a>ros2<span class="w"> </span>launch<span class="w"> </span>包名<span class="w"> </span>文件名.launch.py<span class="w">     </span><span class="c1"># 一键启动多个节点</span>
+</span></code></pre></div>
+<hr />
+<h2 id="chapter-11">第 11 章 常见问题与排查</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ros2 run</code> 报 "Package not found"</td>
+<td>没 source / 包名拼错</td>
+<td><code>source install/setup.bash</code></td>
+</tr>
+<tr>
+<td>报 "No executable found"</td>
+<td><strong>新增入口点后没重新 source</strong></td>
+<td>改 setup.py → build → <strong>source</strong></td>
+</tr>
+<tr>
+<td><code>AttributeError: '_parameter_overrides'</code></td>
+<td><code>declare_parameter</code> 在 <code>super().__init__()</code> 前</td>
+<td><code>super().__init__()</code> 必须放第一行</td>
+</tr>
+<tr>
+<td><code>NameError: name 'req' is not defined</code></td>
+<td>局部变量跨函数不可见</td>
+<td>存到 <code>self.req</code></td>
+</tr>
+<tr>
+<td><code>param set</code> 后波动没变化</td>
+<td>参数是被动机制，没重新读</td>
+<td>回调里每次 <code>get_parameter</code></td>
+</tr>
+<tr>
+<td>根目录 build "成功"但包找不到</td>
+<td>colcon 只找当前目录的 <code>src/</code></td>
+<td>确认 <code>pwd</code>，在 <code>~/ros2_ws</code> 下 build</td>
+</tr>
+<tr>
+<td><code>ros2 node list</code> 是空的</td>
+<td>节点没在运行 / 在 launch 占用终端里敲</td>
+<td>先启动节点，另开终端再查看</td>
+</tr>
+<tr>
+<td>launch 报 "找不到 launch 文件"</td>
+<td>setup.py 没配置 data_files / 没重新 build+source</td>
+<td>按 8.1 第 3 步配置后重编</td>
+</tr>
+<tr>
+<td>改代码后还要不要 source？</td>
+<td>分情况</td>
+<td>只改代码→不用；<strong>改入口点/新包→必须</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="chapter-12">第 12 章 概念速记</h2>
+<p><strong>三个名字（最容易混）：</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>包名（Package）：ros2 pkg create 时定的，装代码的&quot;项目文件夹&quot;
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>入口名（Executable）：setup.py console_scripts 里定义的，ros2 run 敲的词
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>节点名（Node）：代码 super().__init__(&#39;xxx&#39;) 定的，ros2 node list 显示的
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>入口名 ≠ 节点名：ros2 run 用的是入口名，系统里登记的是节点名
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>launch 里 name=... 可以改写节点名（不改话题名）
+</span></code></pre></div>
+<p><strong>四大机制：</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>话题：广播频道（发布者→订阅者，单向，互不认识，靠频道名对接）
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>服务：问答（客户端→服务端，请求+响应，双向）
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>参数：设置面板（节点的可调配置，被动，需主动重读）
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>launch：启动剧本（一条命令启动多个节点，可传参数）
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>回调：一触发就自动执行的函数（ROS 负责&quot;叫醒你&quot;）
+</span></code></pre></div>
+<p><strong>编译流程：</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>改代码 → colcon build → （改入口/新包才需）source → ros2 run
+</span></code></pre></div>
+<p><strong>自动化配置（可选，一劳永逸）：</strong></p>
+<p>把 source 写进 <code>.bashrc</code>，新终端自动生效：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source ~/ros2_ws/install/setup.bash&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+<p>编译快捷命令（改完代码一键编译+生效）：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias rb=&#39;cd ~/ros2_ws &amp;&amp; colcon build &amp;&amp; source install/setup.bash&#39;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Sheng
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../js/falling.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
