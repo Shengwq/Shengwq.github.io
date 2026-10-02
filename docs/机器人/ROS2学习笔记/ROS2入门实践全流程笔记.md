@@ -1,7 +1,7 @@
 # ROS2 入门实践全流程教程
 
 > 适用环境：Windows + WSL2 + Ubuntu 22.04 + ROS2 Humble + Python
-> 读完你能做到：从零搭好环境，创建自己的功能包，写出发布、订阅、服务、参数四类节点，并理解它们背后的原理。
+> 读完你能做到：从零搭好环境，创建自己的功能包，写出发布、订阅、服务、参数四类节点，用 launch 一键启动，并理解它们背后的原理。
 
 如果你之前完全没接触过 ROS，不用怕。这篇教程假设你只会最基本的 Python 语法，每个概念都会先讲"它是什么、为什么存在"，再给代码，最后让你亲手跑起来。
 
@@ -9,22 +9,23 @@
 
 ## 目录
 
-- [第 0 章 环境准备：安装方式怎么选](#第-0-章-环境准备安装方式怎么选)
-- [第 1 章 创建工作空间：所有代码的"家"](#第-1-章-创建工作空间所有代码的家)
-- [第 2 章 创建功能包：ROS 的最小单位](#第-2-章-创建功能包ros-的最小单位)
-- [第 3 章 第一个节点：发布者](#第-3-章-第一个节点发布者)
-- [第 4 章 核心概念：发布-订阅机制](#第-4-章-核心概念发布-订阅机制)
-- [第 5 章 第二个节点：订阅者](#第-5-章-第二个节点订阅者)
-- [第 6 章 服务：一问一答](#第-6-章-服务一问一答)
-- [第 7 章 参数：节点的设置面板](#第-7-章-参数节点的设置面板)
-- [第 8 章 为什么每次都要 source？](#第-8-章-为什么每次都要-source)
-- [第 9 章 常用命令速查](#第-9-章-常用命令速查)
-- [第 10 章 常见问题与排查](#第-10-章-常见问题与排查)
-- [第 11 章 概念速记](#第-11-章-概念速记)
+- [第 0 章 环境准备：安装方式怎么选](#chapter-0)
+- [第 1 章 创建工作空间：所有代码的家](#chapter-1)
+- [第 2 章 创建功能包：ROS 的最小单位](#chapter-2)
+- [第 3 章 第一个节点：发布者](#chapter-3)
+- [第 4 章 核心概念：发布-订阅机制](#chapter-4)
+- [第 5 章 第二个节点：订阅者](#chapter-5)
+- [第 6 章 服务：一问一答](#chapter-6)
+- [第 7 章 参数：节点的设置面板](#chapter-7)
+- [第 8 章 launch：一条命令启动所有节点](#chapter-8)
+- [第 9 章 为什么每次都要 source？](#chapter-9)
+- [第 10 章 常用命令速查](#chapter-10)
+- [第 11 章 常见问题与排查](#chapter-11)
+- [第 12 章 概念速记](#chapter-12)
 
 ---
 
-## 第 0 章 环境准备：安装方式怎么选
+## 第 0 章 环境准备：安装方式怎么选 {#chapter-0}
 
 ROS2 官方支持 Ubuntu，Windows 用户有几种办法用上它。先看对比，再决定：
 
@@ -88,7 +89,7 @@ echo $ROS_DISTRO
 
 ---
 
-## 第 1 章 创建工作空间：所有代码的"家"
+## 第 1 章 创建工作空间：所有代码的家 {#chapter-1}
 
 工作空间（Workspace）就是存放所有功能包的"大文件夹"。你的所有 ROS 项目代码都会放在这里。
 
@@ -97,7 +98,7 @@ mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws
 ```
 
-创建后目录里会有三个文件夹，各司其职：
+创建后目录里会有几个文件夹，各司其职：
 
 | 目录 | 作用 |
 |------|------|
@@ -110,7 +111,7 @@ cd ~/ros2_ws
 
 ---
 
-## 第 2 章 创建功能包：ROS 的最小单位
+## 第 2 章 创建功能包：ROS 的最小单位 {#chapter-2}
 
 功能包（Package）是 ROS 代码的最小组织单位，可以理解成一个"项目文件夹"。一个包里放着一组相关的节点和配置。
 
@@ -134,7 +135,7 @@ motor_demo/
 
 ---
 
-## 第 3 章 第一个节点：发布者
+## 第 3 章 第一个节点：发布者 {#chapter-3}
 
 现在开始写第一个节点。我们会模拟一台"电机编码器"，每隔 0.1 秒发布一次当前速度值。
 
@@ -185,7 +186,7 @@ if __name__ == '__main__':
 | `create_timer(0.1, self.timer_callback)` | 造一个"定时器"，每 0.1 秒自动调用一次回调函数 |
 | `main()` + `if __name__ == '__main__'` | 程序入口。`rclpy.spin(node)` 让节点一直运行，直到你按 Ctrl+C |
 
-两个暂时不用深究的点，但先认识它们：
+两个暂时不用深究、但先认识的点：
 
 **话题名为什么带斜杠 `/motor/velocity`？**
 斜杠表示**层级结构**，就像文件夹路径。`/motor/velocity` 的意思是"motor 这个设备下的 velocity 数据"。以后话题多了能整齐分类：`/motor/velocity`、`/motor/position`、`/imu/accel`……一眼看出每个话题属于哪个设备。开头的 `/` 表示"全局话题"，规范的话题都从 `/` 开始。
@@ -241,7 +242,7 @@ ros2 run motor_demo publisher_node
 
 ---
 
-## 第 4 章 核心概念：发布-订阅机制
+## 第 4 章 核心概念：发布-订阅机制 {#chapter-4}
 
 跑通了第一个节点，现在把背后的机制讲透。ROS 的一切都建立在**发布-订阅**之上：
 
@@ -272,11 +273,9 @@ ros2 run motor_demo publisher_node
 | 动作 | 主动喊话 | 被动接收 |
 | 回调函数 | `timer_callback` | `listener_callback` |
 
-![ROS2 核心概念全景图](🧠 ROS2 核心概念速查表（Day 1）.assets/image-20261002005707670-1790873835231-1.png)
-
 ---
 
-## 第 5 章 第二个节点：订阅者
+## 第 5 章 第二个节点：订阅者 {#chapter-5}
 
 现在写一个订阅者，监听 `/motor/velocity` 话题，把收到的速度打印出来——这就是你的程序真正在"听"了。
 
@@ -327,7 +326,7 @@ if __name__ == '__main__':
 'subscriber_node = motor_demo.subscriber_node:main',
 ```
 
-> ⚠️ **新增入口点后必须重新 source**，否则会报 "No executable found"。原因见第 8 章。
+> ⚠️ **新增入口点后必须重新 source**，否则会报 "No executable found"。原因见第 9 章。
 
 ```bash
 cd ~/ros2_ws
@@ -359,7 +358,7 @@ ros2 topic info /motor/velocity      # 查看话题信息
 
 ---
 
-## 第 6 章 服务：一问一答
+## 第 6 章 服务：一问一答 {#chapter-6}
 
 话题适合"持续不断的数据流"，但有些场景需要**一问一答**：你问一个问题，马上拿到一个结果。比如"现在温度多少？""帮我算一下 1+1"。这时候用**服务（Service）**。
 
@@ -490,7 +489,7 @@ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts "{a: 8, b: 12}
 
 ---
 
-## 第 7 章 参数：节点的设置面板
+## 第 7 章 参数：节点的设置面板 {#chapter-7}
 
 有些值需要"时不时调一下"，比如报警阈值、发布频率、电机名字。如果每次都改代码、重新编译，太麻烦了。ROS 用**参数（Parameter）**解决这个问题：参数是节点的"设置面板"，**运行中可以直接改，不用改代码、不用重启**。
 
@@ -565,9 +564,143 @@ ros2 param set /motor_encoder_publisher noise_range 2.0  # 运行中修改参数
 
 ---
 
-## 第 8 章 为什么每次都要 source？
+## 第 8 章 launch：一条命令启动所有节点 {#chapter-8}
 
-学到这里你可能已经困惑：`colcon build` 和 `source install/setup.bash` 每次都一起敲，它们到底各自干什么？能不能少敲一个？
+前面跑发布-订阅时，你要手动开两个终端。节点一多（5 个、10 个），手动开一堆终端又累又容易乱。**launch 文件**就是来解决这个的：一条命令**同时启动多个节点**。
+
+### 8.1 launch 文件长什么样
+
+ROS2 的 launch 文件是一个 **Python 文件**，后缀 `.launch.py`，放在包的 `launch/` 目录里。
+
+**第 1 步：建目录 + 写文件**
+
+```bash
+mkdir -p ~/ros2_ws/src/motor_demo/launch
+```
+
+文件：`~/ros2_ws/src/motor_demo/launch/demo.launch.py`
+
+```python
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        # 同时启动发布者
+        Node(
+            package='motor_demo',        # 包名
+            executable='publisher_node', # 入口名（setup.py 里注册的）
+            name='pub_node',             # 给节点起个别名（可选）
+            output='screen'              # 日志打印到屏幕
+        ),
+        # 同时启动订阅者
+        Node(
+            package='motor_demo',
+            executable='subscriber_node',
+            name='sub_node',
+            output='screen'
+        ),
+    ])
+```
+
+**第 2 步：逐段讲懂**
+
+| 代码 | 意思 |
+|------|------|
+| `from launch import LaunchDescription` | 引入"启动描述"工具 |
+| `from launch_ros.actions import Node` | 引入"启动一个 ROS 节点"的动作 |
+| `generate_launch_description()` | **固定函数名**，ROS 启动器专门找这个函数 |
+| `Node(package=..., executable=..., ...)` | 描述"要启动哪个包里的哪个入口"，跟你 `ros2 run 包名 入口名` 一样 |
+| `output='screen'` | 让节点的打印输出显示在终端（不加这个默认不显示日志） |
+
+**核心认知**：launch 文件里的每一个 `Node(...)`，就相当于你手动敲的一条 `ros2 run`。一条 launch 能替代 N 条手动命令。
+
+**第 3 步：注册 launch（在 setup.py 里声明）**
+
+launch 文件不是自动被识别的，需要告诉打包系统"这个文件要装进去"。打开 `setup.py`，修改两处：
+
+```python
+# ① 顶部 import 区加这两行（如果还没有）：
+import os
+from glob import glob
+
+# ② 在 data_files 里加上 launch 目录（找到现有 data_files 段，把新行追加进去，别覆盖原内容）：
+data_files=[
+    (os.path.join('share', 'motor_demo', 'launch'), glob('launch/*.launch.py')),
+]
+```
+
+> 这两处属于"配置声明"：告诉打包系统"除了 Python 代码，还有 launch 文件要一起装进 install/"。照抄模板即可，不需要深究原理。
+
+**第 4 步：编译 + 运行**
+
+```bash
+cd ~/ros2_ws
+colcon build
+source install/setup.bash
+ros2 launch motor_demo demo.launch.py
+```
+
+发布者和订阅者**同时跑起来了**。用 `ros2 node list`（在另一个终端敲）会看到 `pub_node` 和 `sub_node`。
+
+### 8.2 launch 传参数：启动时直接带上配置
+
+很多参数是**启动时就该定好的**（比如报警阈值）。在 launch 里传，启动即生效，不用运行后再敲 `param set`。
+
+在 `Node(...)` 里加一个 `parameters` 字段，用**字典**传：
+
+```python
+Node(
+    package='motor_demo',
+    executable='publisher_node',
+    name='pub_node',
+    output='screen',
+    parameters=[{'noise_range': 2.0}]   # 启动时直接设置参数
+),
+```
+
+**拆解**：
+
+| 写法 | 意思 |
+|------|------|
+| `parameters=[...]` | `Node()` 专门用来传参数的字段 |
+| `{...}` | Python **字典**：参数名 → 参数值 |
+| `'noise_range': 2.0` | 把 `noise_range` 启动时设成 2.0 |
+
+验证：
+
+```bash
+ros2 launch motor_demo demo.launch.py
+# 另一个终端：
+ros2 param get /pub_node noise_range    # 注意节点名是 pub_node（launch 里 name 改写）
+```
+
+预期输出 `2.0`。
+
+**三个设置参数的时机对比**：
+
+```
+代码里 declare 的 0.05   →  默认值（兜底）
+launch 里 parameters 的 2.0  →  启动时覆盖
+运行中 param set  →  再覆盖
+```
+
+优先级：**运行中 set > launch 传参 > 代码默认值**。
+
+### 8.3 launch 的两条铁律（重要）
+
+| 规则 | 说明 |
+|------|------|
+| **launch 占终端** | 启动后该终端被占用，要敲命令必须**另开终端** |
+| **Ctrl+C 全杀** | 退出 launch = 它启动的所有节点一起停止 |
+
+> 常见误区：在 launch 运行的终端里敲 `ros2 node list`，会"没反应"——不是节点没启动，而是 launch 占着这个终端，你的命令根本没执行。**"看节点"永远要在另一个终端做。**
+
+---
+
+## 第 9 章 为什么每次都要 source？ {#chapter-9}
+
+`colcon build` 和 `source install/setup.bash` 每次都一起敲，它们到底各自干什么？能不能少敲一个？
 
 先看各自的作用：
 
@@ -594,7 +727,7 @@ ros2 pkg list | grep motor_demo    # 能看到 motor_demo
 ros2 pkg list | grep motor_demo    # 看不到！因为新终端是"白纸"
 ```
 
-你之前遇到的 `ros2 run` 报 "No executable found"，表面看是"找不到入口"，本质是——**ROS 根本没找到你的包**，因为你 build 完没 source，系统不知道 `motor_demo` 存在。
+之前遇到的 `ros2 run` 报 "No executable found"，表面看是"找不到入口"，本质是——**ROS 根本没找到你的包**，因为你 build 完没 source，系统不知道 `motor_demo` 存在。
 
 **什么情况下 build 后必须重新 source？**
 
@@ -608,11 +741,11 @@ ros2 pkg list | grep motor_demo    # 看不到！因为新终端是"白纸"
 
 **规律**：改代码 → `colcon build` → （改入口/新包才需）`source` → `ros2 run`。缺一不可，顺序也别颠倒。
 
-如果嫌麻烦，可以把 source 写进 `~/.bashrc`（每个新终端自动执行），一劳永逸，见第 10 章的自动化配置。
+如果嫌麻烦，可以把 source 写进 `~/.bashrc`（每个新终端自动执行），一劳永逸，见第 12 章的自动化配置。
 
 ---
 
-## 第 9 章 常用命令速查
+## 第 10 章 常用命令速查 {#chapter-10}
 
 ```bash
 # 工作空间 / 包
@@ -637,11 +770,14 @@ ros2 service call 服务名 类型 "{参数}"  # 命令行调用服务
 ros2 param list 节点名                # 查看节点所有参数
 ros2 param get 节点名 参数名          # 读取参数
 ros2 param set 节点名 参数名 值       # 修改参数
+
+# launch
+ros2 launch 包名 文件名.launch.py     # 一键启动多个节点
 ```
 
 ---
 
-## 第 10 章 常见问题与排查
+## 第 11 章 常见问题与排查 {#chapter-11}
 
 | 问题 | 原因 | 解决 |
 |------|------|------|
@@ -651,11 +787,13 @@ ros2 param set 节点名 参数名 值       # 修改参数
 | `NameError: name 'req' is not defined` | 局部变量跨函数不可见 | 存到 `self.req` |
 | `param set` 后波动没变化 | 参数是被动机制，没重新读 | 回调里每次 `get_parameter` |
 | 根目录 build "成功"但包找不到 | colcon 只找当前目录的 `src/` | 确认 `pwd`，在 `~/ros2_ws` 下 build |
+| `ros2 node list` 是空的 | 节点没在运行 / 在 launch 占用终端里敲 | 先启动节点，另开终端再查看 |
+| launch 报 "找不到 launch 文件" | setup.py 没配置 data_files / 没重新 build+source | 按 8.1 第 3 步配置后重编 |
 | 改代码后还要不要 source？ | 分情况 | 只改代码→不用；**改入口点/新包→必须** |
 
 ---
 
-## 第 11 章 概念速记
+## 第 12 章 概念速记 {#chapter-12}
 
 **三个名字（最容易混）：**
 
@@ -665,6 +803,7 @@ ros2 param set 节点名 参数名 值       # 修改参数
 节点名（Node）：代码 super().__init__('xxx') 定的，ros2 node list 显示的
 
 入口名 ≠ 节点名：ros2 run 用的是入口名，系统里登记的是节点名
+launch 里 name=... 可以改写节点名（不改话题名）
 ```
 
 **四大机制：**
@@ -673,6 +812,7 @@ ros2 param set 节点名 参数名 值       # 修改参数
 话题：广播频道（发布者→订阅者，单向，互不认识，靠频道名对接）
 服务：问答（客户端→服务端，请求+响应，双向）
 参数：设置面板（节点的可调配置，被动，需主动重读）
+launch：启动剧本（一条命令启动多个节点，可传参数）
 回调：一触发就自动执行的函数（ROS 负责"叫醒你"）
 ```
 
