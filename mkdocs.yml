@@ -85,12 +85,16 @@ nav:
     - FreeRTOS入门培训: 嵌入式/FreeRTOS入门培训.md
   - 机器人:
     - ROS2学习笔记:
+      - ROS2学习总览地图: 机器人/ROS2学习笔记/0.ROS2 学习总览地图.md
+      - Linux命令速查: 机器人/ROS2学习笔记/1.0ROS2 学习必备 Linux 命令速查.md
       - 入门实践全流程: 机器人/ROS2学习笔记/ROS2入门实践全流程笔记.md
+      - 工作空间与功能包: 机器人/ROS2学习笔记/ROS2 多功能包与工作空间.md
       - Day 1：发布与订阅: 机器人/ROS2学习笔记/ROS2 学习笔记（Day 1）发布与订阅.md
       - Day 2：launch启动文件: 机器人/ROS2学习笔记/ROS2 学习笔记（Day 2）launch 启动文件.md
       - 核心概念速查表: 机器人/ROS2学习笔记/ROS2 核心概念速查表.md
       - 三个名字：包名、入口名、节点名: 机器人/ROS2学习笔记/ROS2 三个名字：包名、入口名、节点名.md
       - 编译与生效：colcon build和source: 机器人/ROS2学习笔记/ROS2 编译与生效：colcon build 和 source 详解.md
+      - TurtleBot3仿真建图: 机器人/ROS2学习笔记/ROS2 实战：TurtleBot3 仿真建图入门.md
   - 思想垃圾:
     - 概览: 思想垃圾/index.md
     - 乖孩子误区: 思想垃圾/乖孩子误区.md
