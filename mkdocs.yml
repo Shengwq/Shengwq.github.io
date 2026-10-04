@@ -91,9 +91,13 @@ nav:
       - 工作空间与功能包: 机器人/ROS2学习笔记/ROS2 多功能包与工作空间.md
       - Day 1：发布与订阅: 机器人/ROS2学习笔记/ROS2 学习笔记（Day 1）发布与订阅.md
       - Day 2：launch启动文件: 机器人/ROS2学习笔记/ROS2 学习笔记（Day 2）launch 启动文件.md
+      - Day 3：话题通信基础与 turtlesim 实操: 机器人/ROS2学习笔记/ROS2 学习笔记（Day 3）话题通信基础与 turtlesim 实操.md
+      - Day 4：自定义消息与实战排错: 机器人/ROS2学习笔记/ROS2 学习笔记（Day 4）自定义消息与实战排错.md
       - 核心概念速查表: 机器人/ROS2学习笔记/ROS2 核心概念速查表.md
       - 三个名字：包名、入口名、节点名: 机器人/ROS2学习笔记/ROS2 三个名字：包名、入口名、节点名.md
       - 编译与生效：colcon build和source: 机器人/ROS2学习笔记/ROS2 编译与生效：colcon build 和 source 详解.md
+      - 自定义消息接口: 机器人/ROS2学习笔记/ROS2 自定义消息接口.md
+      - Python基础与实例: 机器人/ROS2学习笔记/ROS2 学习必备 Python 基础与实例.md
       - TurtleBot3仿真建图: 机器人/ROS2学习笔记/ROS2 实战：TurtleBot3 仿真建图入门.md
   - 思想垃圾:
     - 概览: 思想垃圾/index.md

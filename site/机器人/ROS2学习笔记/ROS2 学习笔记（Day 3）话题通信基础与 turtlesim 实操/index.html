@@ -12,13 +12,13 @@
         <meta name="author" content="Sheng">
       
       
-        <link rel="canonical" href="https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AE%9E%E6%88%98%EF%BC%9ATurtleBot3%20%E4%BB%BF%E7%9C%9F%E5%BB%BA%E5%9B%BE%E5%85%A5%E9%97%A8/">
+        <link rel="canonical" href="https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%203%EF%BC%89%E8%AF%9D%E9%A2%98%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E4%B8%8E%20turtlesim%20%E5%AE%9E%E6%93%8D/">
       
       
-        <link rel="prev" href="../ROS2%20%E5%AD%A6%E4%B9%A0%E5%BF%85%E5%A4%87%20Python%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E4%BE%8B/">
+        <link rel="prev" href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%202%EF%BC%89launch%20%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6/">
       
       
-        <link rel="next" href="../../../%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/">
+        <link rel="next" href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%204%EF%BC%89%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8E%92%E9%94%99/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>TurtleBot3仿真建图 - 追光小站</title>
+        <title>Day 3：话题通信基础与 turtlesim 实操 - 追光小站</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ros2-turtlebot3" class="md-skip">
+        <a href="#ros2-day-3-turtlesim" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TurtleBot3仿真建图
+              Day 3：话题通信基础与 turtlesim 实操
             
           </span>
         </div>
@@ -908,10 +908,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%203%EF%BC%89%E8%AF%9D%E9%A2%98%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E4%B8%8E%20turtlesim%20%E5%AE%9E%E6%93%8D/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 3：话题通信基础与 turtlesim 实操
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -927,6 +954,225 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、机器人为什么要话题通信
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、话题通信的四个关键点（框架）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turtlesim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、turtlesim 实操：小海龟模拟器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、turtlesim 实操：小海龟模拟器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 1 步：启动小海龟
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 2 步：查看节点列表和信息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 3 步：订阅位置话题，看数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、线速度 vs 角速度（开车类比）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#twist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、消息接口：Twist 长什么样
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、用命令行发布话题（控制小海龟）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、用命令行发布话题（控制小海龟）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四个参数对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAML 格式规则（必记）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各种动作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发布频率：-r 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、命令行工具全家（本节实操汇总）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、本节速记
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、自查清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1104,37 +1350,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TurtleBot3仿真建图
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ROS2%20%E5%AE%9E%E6%88%98%EF%BC%9ATurtleBot3%20%E4%BB%BF%E7%9C%9F%E5%BB%BA%E5%9B%BE%E5%85%A5%E9%97%A8/" class="md-nav__link">
         
   
   
@@ -1150,320 +1369,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、项目全貌：今天在干什么
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、三个核心概念（零基础友好）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="二、三个核心概念（零基础友好）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 仿真是什么
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-gazebo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Gazebo 是仿真软件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-turtlebot3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. TurtleBot3 是什么
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gazebo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、Gazebo 怎么"造"出房间和小车：全是配置文件
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="三、Gazebo 怎么&#34;造&#34;出房间和小车：全是配置文件">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        房间图纸长什么样
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        小车图纸里的雷达配置
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、安装配置全流程（实测命令）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、安装配置全流程（实测命令）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 安装依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-clone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 建工作空间 + clone 两个仓库
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 编译
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-bashrc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 设置环境变量（写进 ~/.bashrc 一劳永逸）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#slam" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        五、建图流程（SLAM）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="五、建图流程（SLAM）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#slam_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SLAM 是什么
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        保存地图
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        地图怎么读
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wsl2-gazebo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、WSL2 跑 Gazebo 卡顿：原因与独显切换
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="六、WSL2 跑 Gazebo 卡顿：原因与独显切换">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#wsl2-3d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么 WSL2 3D 仿真性能一般
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        自查：用的是不是核显
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        切到独显（立竿见影）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七、常见坑记录
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        八、下一步：导航
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        九、自查清单
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1795,7 +1700,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        一、项目全貌：今天在干什么
+        一、机器人为什么要话题通信
       
     </span>
   </a>
@@ -1806,19 +1711,30 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        二、三个核心概念（零基础友好）
+        二、话题通信的四个关键点（框架）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="二、三个核心概念（零基础友好）">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turtlesim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、turtlesim 实操：小海龟模拟器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、turtlesim 实操：小海龟模拟器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 仿真是什么
+        第 1 步：启动小海龟
       
     </span>
   </a>
@@ -1826,99 +1742,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-gazebo" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Gazebo 是仿真软件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-turtlebot3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. TurtleBot3 是什么
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gazebo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三、Gazebo 怎么"造"出房间和小车：全是配置文件
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="三、Gazebo 怎么&#34;造&#34;出房间和小车：全是配置文件">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        房间图纸长什么样
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        小车图纸里的雷达配置
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        四、安装配置全流程（实测命令）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、安装配置全流程（实测命令）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 安装依赖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-clone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 建工作空间 + clone 两个仓库
+        第 2 步：查看节点列表和信息
       
     </span>
   </a>
@@ -1929,18 +1756,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 编译
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-bashrc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 设置环境变量（写进 ~/.bashrc 一劳永逸）
+        第 3 步：订阅位置话题，看数据
       
     </span>
   </a>
@@ -1953,22 +1769,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#slam" class="md-nav__link">
+  <a href="#vs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五、建图流程（SLAM）
+        四、线速度 vs 角速度（开车类比）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="五、建图流程（SLAM）">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#twist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、消息接口：Twist 长什么样
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、用命令行发布话题（控制小海龟）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、用命令行发布话题（控制小海龟）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#slam_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SLAM 是什么
+        基本命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四个参数对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAML 格式规则（必记）
       
     </span>
   </a>
@@ -1979,7 +1839,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        保存地图
+        各种动作
       
     </span>
   </a>
@@ -1987,95 +1847,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发布频率：-r 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        地图怎么读
+        七、命令行工具全家（本节实操汇总）
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#wsl2-gazebo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        六、WSL2 跑 Gazebo 卡顿：原因与独显切换
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="六、WSL2 跑 Gazebo 卡顿：原因与独显切换">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#wsl2-3d" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        为什么 WSL2 3D 仿真性能一般
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        自查：用的是不是核显
+        八、本节速记
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        切到独显（立竿见影）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        七、常见坑记录
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        八、下一步：导航
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         九、自查清单
@@ -2105,326 +1915,369 @@
   
 
 
-<h1 id="ros2-turtlebot3">ROS2 实战：TurtleBot3 仿真建图入门</h1>
+<h1 id="ros2-day-3-turtlesim">ROS2 学习笔记（Day 3）：话题通信基础与 turtlesim 实操</h1>
 <blockquote>
-<p>本篇是 TurtleBot3 开源项目实战的详细笔记，从零讲清：仿真是什么、Gazebo 怎么工作、怎么把虚拟小车跑起来建出地图。
-前置要求：已按《ROS2入门实践全流程笔记》装好环境（WSL2 + Ubuntu 22.04 + ROS2 Humble），已掌握发布/订阅基本概念。
-环境：Windows + WSL2 + TurtleBot3 Humble 源码编译版</p>
+<p>本篇是 Day 3 的详细学习笔记，覆盖：话题通信四个关键点、机器人为什么要话题通信、turtlesim 小海龟实操、命令行工具全家、Twist 消息结构、ROS 坐标系、YAML 格式。
+对应主教程：《ROS2 入门实践全流程教程》第 3 章（话题通信）。
+与 Day 1 的关系：Day 1 学会了"怎么写发布者和订阅者"，本篇把话题通信<strong>系统化</strong>（四要素框架），并用小海龟把命令行工具全部实操一遍。</p>
 </blockquote>
 <hr />
-<h2 id="_1">一、项目全貌：今天在干什么</h2>
-<p>用一个"4 层结构"理解整个项目，每一层都有自己的图纸和报错——报错时先判断是哪一层，就不会慌：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>① 你（遥控手柄，终端3）
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   ↓ 速度指令 /cmd_vel
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>② 虚拟世界 Gazebo（终端1）—— 照着&quot;图纸&quot;搭房间和小车，物理引擎让车真的会动
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   ↓ 雷达扫描 /scan + 里程计 /odom
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>③ 大脑（终端2）—— cartographer 边定位边拼地图 /  navigation2 拿着地图导航
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ↓ 地图 /map
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>④ 显示 RViz + 地图文件 map.pgm
-</span></code></pre></div>
+<h2 id="_1">一、机器人为什么要话题通信</h2>
+<p>一个机器人身上装了很多<strong>传感器</strong>（感知环境）和<strong>执行器</strong>（执行动作）：</p>
 <table>
 <thead>
 <tr>
-<th>层</th>
-<th>名字</th>
-<th>一句话</th>
-<th>常见报错</th>
+<th>类别</th>
+<th>例子</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>①</td>
-<td>遥控</td>
-<td>按 w/a/d 发速度指令（发布者！）</td>
-<td>没设环境变量</td>
+<td>传感器</td>
+<td>摄像头、激光雷达、激光测距单元、IMU</td>
 </tr>
 <tr>
-<td>②</td>
-<td>世界</td>
-<td>Gazebo 仿真软件</td>
-<td>gzserver 卡、spawn 失败</td>
-</tr>
-<tr>
-<td>③</td>
-<td>大脑</td>
-<td>建图/导航算法</td>
-<td>话题对不上</td>
-</tr>
-<tr>
-<td>④</td>
-<td>显示</td>
-<td>RViz 画给你看</td>
-<td>卡顿、崩</td>
+<td>执行器</td>
+<td>底盘、机械臂关节、电机、电动夹爪</td>
 </tr>
 </tbody>
 </table>
+<p>它们之间要互相传递数据，ROS2 为此引入<strong>订阅-发布机制</strong>（话题通信）。</p>
+<p><strong>类比（公众号订阅）</strong>：
+- 作者写文章发布 → <strong>发布者</strong>
+- 读者关注公众号 → <strong>订阅者</strong>
+- 公众号名字（凭名字才能找到内容）→ <strong>话题名</strong>
+- 内容是文字/图片/视频（类型）→ <strong>消息类型</strong></p>
+<blockquote>
+<p>补充：物联网里的 <strong>MQTT 协议</strong>也是订阅-发布机制——这套思想在工业界很通用。</p>
+</blockquote>
 <hr />
-<h2 id="_2">二、三个核心概念（零基础友好）</h2>
-<h3 id="1">1. 仿真是什么</h3>
-<p>在电脑里搭一个<strong>机器人练习场</strong>——不花钱买真车、不怕撞墙、随时重置。真实机器人的算法（导航、避障）可以先在这里开发调试，跑通了再上真机。</p>
-<h3 id="2-gazebo">2. Gazebo 是仿真软件</h3>
-<p>专门给机器人用的 3D 仿真器（区别于游戏引擎）：
-- 管<strong>场景</strong>：房间、墙、地面
-- 管<strong>物理</strong>：重力、碰撞、摩擦（内置物理引擎）
-- 管<strong>传感器</strong>：激光雷达、相机、IMU 会真的产生数据</p>
-<h3 id="3-turtlebot3">3. TurtleBot3 是什么</h3>
-<p>韩国 ROBOTIS 公司做的<strong>开源机器人小车</strong>（图纸+代码全公开）：
-- 硬件：小车底盘 + 两个轮子 + 树莓派（大脑）+ 激光雷达（眼睛）
-- 软件：仿真包（虚拟房间+小车）、建图包、导航包全开源
-- 地位：全球最流行的 ROS 入门机器人之一，面试高频话题</p>
-<hr />
-<h2 id="gazebo">三、Gazebo 怎么"造"出房间和小车：全是配置文件</h2>
-<p>Gazebo <strong>不会凭空造东西</strong>，一切都靠"模型文件"描述，像乐高说明书：</p>
+<h2 id="_2">二、话题通信的四个关键点（框架）</h2>
+<blockquote>
+<p><strong>发布者、订阅者、话题名、话题类型</strong>——记住这四个，话题通信就通了。</p>
+</blockquote>
 <table>
 <thead>
 <tr>
-<th>东西</th>
-<th>用什么文件</th>
-<th>相当于</th>
+<th>关键点</th>
+<th>通俗含义</th>
+<th>类比公众号</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>虚拟房间</td>
-<td><code>.world</code> 文件（XML 文本）</td>
-<td>房间的设计图纸</td>
+<td><strong>发布者</strong></td>
+<td>创建数据、往外发的一方</td>
+<td>作者</td>
 </tr>
 <tr>
-<td>虚拟小车</td>
-<td><code>.sdf</code> 文件（XML 文本）</td>
-<td>小车的零件清单+装配说明</td>
+<td><strong>订阅者</strong></td>
+<td>接收数据的一方</td>
+<td>读者</td>
+</tr>
+<tr>
+<td><strong>话题名</strong></td>
+<td>数据的"频道名"，双方靠它对接</td>
+<td>公众号名</td>
+</tr>
+<tr>
+<td><strong>话题类型</strong></td>
+<td>数据长什么样（消息接口）</td>
+<td>内容形式（文字/图片/视频）</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_3">房间图纸长什么样</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat<span class="w"> </span>~/turtlebot3_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/worlds/turtlebot3_world.world
-</span></code></pre></div>
-<div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;include&gt;&lt;uri&gt;</span>model://ground_plane<span class="nt">&lt;/uri&gt;&lt;/include&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 引用：铺地面 --&gt;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">&lt;include&gt;&lt;uri&gt;</span>model://sun<span class="nt">&lt;/uri&gt;&lt;/include&gt;</span><span class="w">           </span><span class="cm">&lt;!-- 引用：挂光源 --&gt;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">&lt;physics</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ode&quot;</span><span class="nt">&gt;</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&lt;real_time_update_rate&gt;</span>1000<span class="nt">&lt;/real_time_update_rate&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 每秒算 1000 次物理 --&gt;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">&lt;/physics&gt;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">&lt;model</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;turtlebot3_world&quot;</span><span class="nt">&gt;</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">&lt;static&gt;</span>1<span class="nt">&lt;/static&gt;</span><span class="w">            </span><span class="cm">&lt;!-- 1=静态物体（墙） --&gt;</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">&lt;include&gt;&lt;uri&gt;</span>model://turtlebot3_world<span class="nt">&lt;/uri&gt;&lt;/include&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 引用房间主体 --&gt;</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nt">&lt;/model&gt;</span>
-</span></code></pre></div>
-<p><strong>关键认知</strong>：
-- <code>&lt;include&gt;</code> = 引用，像 C 语言 <code>#include</code>——墙的详细定义在 <code>models/turtlebot3_world/model.sdf</code> 里
-- 改文件 = 改世界（改物理频率、往房间加模型）
-- 这些文件是<strong>开源项目写好的</strong>，clone 下来就自带，可以按需修改</p>
-<h3 id="_4">小车图纸里的雷达配置</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cat<span class="w"> </span>~/turtlebot3_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/models/turtlebot3_burger/model.sdf
-</span></code></pre></div>
-<p>里面能看到小车的"零件清单"：底盘（质量）、轮子（位置）、雷达（每秒扫几次、一圈几个点）——改这些数字 = 改小车的"眼睛"。</p>
+<p><strong>硬性规则</strong>：发布者和订阅者必须 <strong>话题名一致 + 消息类型一致</strong>，否则频道对不上。</p>
 <hr />
-<h2 id="_5">四、安装配置全流程（实测命令）</h2>
-<h3 id="1_1">1. 安装依赖</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-gazebo-*<span class="w"> </span>ros-humble-cartographer<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>ros-humble-cartographer-ros<span class="w"> </span>ros-humble-navigation2<span class="w"> </span>ros-humble-nav2-bringup
+<h2 id="turtlesim">三、turtlesim 实操：小海龟模拟器</h2>
+<p>turtlesim 是 ROS2 自带的小游戏：一只小海龟，<strong>发布者控制它，订阅者看它位置</strong>——四个关键点全在里面。</p>
+<h3 id="1">第 1 步：启动小海龟</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlesim<span class="w"> </span>turtlesim_node
 </span></code></pre></div>
-<p>缺什么补什么（常见）：
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-turtlebot3-msgs<span class="w"> </span>ros-humble-dynamixel-sdk
-</span></code></pre></div></p>
-<h3 id="2-clone">2. 建工作空间 + clone 两个仓库</h3>
-<p><strong>turtlebot3 需要两个仓库</strong>（容易漏第二个）：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/turtlebot3_ws/src
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>~/turtlebot3_ws/src
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 仓库1：主仓库（含消息 msgs、建图 cartographer、导航 navigation2）</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>humble<span class="w"> </span>https://github.com/ROBOTIS-GIT/turtlebot3.git
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># 仓库2：仿真仓库（含 Gazebo 世界和小车模型）</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>humble<span class="w"> </span>https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+<p>弹出一个蓝色窗口，一只小海龟在中间。</p>
+<h3 id="2">第 2 步：查看节点列表和信息</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 新终端</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w">          </span><span class="c1"># 看到 /turtlesim 节点</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/turtlesim<span class="w">   </span><span class="c1"># 查看它的订阅者和发布者</span>
 </span></code></pre></div>
-<blockquote>
-<p>GitHub 国内访问不稳定时：换镜像 <code>https://ghproxy.com/https://github.com/...</code>，或设置 <code>git config --global http.version HTTP/1.1</code> 后重试。</p>
-</blockquote>
-<h3 id="3">3. 编译</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>~/turtlebot3_ws
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
+<p><code>node info</code> 输出里会看到：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Subscribers:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  /turtle1/cmd_vel     类型: geometry_msgs/msg/Twist   ← 谁发控制指令给它
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Publishers:
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  /turtle1/pose        类型: turtlesim/msg/Pose        ← 它实时报自己的位置
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  /rosout              ...
 </span></code></pre></div>
-<blockquote>
-<p><code>--symlink-install</code>：编译产物不复制，只做"快捷方式"指向源码——开发期改代码不用重新 build（Python 包直接生效）。正式部署用普通 <code>colcon build</code>。</p>
-</blockquote>
-<h3 id="4-bashrc">4. 设置环境变量（写进 ~/.bashrc 一劳永逸）</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source ~/turtlebot3_ws/install/setup.bash&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export TURTLEBOT3_MODEL=burger&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/humble/share/turtlebot3_gazebo/models&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<p><strong>两个话题的含义</strong>：
+- <code>/turtle1/cmd_vel</code>：控制话题（让小海龟怎么动）
+- <code>/turtle1/pose</code>：位置话题（小海龟实时在哪）</p>
+<h3 id="3">第 3 步：订阅位置话题，看数据</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/turtle1/pose
 </span></code></pre></div>
-<blockquote>
-<p><code>TURTLEBOT3_MODEL</code> 是 turtlebot3 所有启动脚本的"入场券"（burger/waffle 车型选择），不设就报 <code>KeyError: 'TURTLEBOT3_MODEL'</code>。</p>
-</blockquote>
-<hr />
-<h2 id="slam">五、建图流程（SLAM）</h2>
-<p>三个终端，各管一层：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 终端1：启动虚拟世界（场地）</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 终端2：启动建图（大脑，会弹出 RViz）</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># 终端3：键盘遥控（手柄），w/a/d 开小车逛房间</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
+<p>输出：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>x: 5.54
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>y: 5.54
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>theta: 0.0
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>linear_velocity: 0.0
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>angular_velocity: 0.0
 </span></code></pre></div>
-<p>建图成功的关键日志：
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>odom rate: 29.41 Hz      ← 里程计数据正常
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>scan rate: 5.00 Hz       ← 雷达数据正常
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Added trajectory with ID &#39;0&#39;  ← 建图轨迹已启动
-</span></code></pre></div></p>
-<h3 id="slam_1">SLAM 是什么</h3>
-<p><strong>同时定位与建图</strong>。比喻：闭着眼走进陌生房间，边走边用手杖（激光）探墙，同时在脑子里记"走了几步、拐了几次弯、墙在哪"——走完，脑子里就有了房间地图。</p>
-<ul>
-<li>定位 = 我走到哪了</li>
-<li>建图 = 墙在哪、路在哪</li>
-<li>两者互相依赖，同时完成</li>
-</ul>
-<h3 id="_6">保存地图</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>~/map
-</span></code></pre></div>
-<p>生成 <code>~/map.pgm</code>（图片）和 <code>~/map.yaml</code>（配置）。</p>
-<p>用 Windows 图片查看器直接看（绕过卡顿的 RViz）：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>explorer.exe<span class="w"> </span>~/map.pgm
-</span></code></pre></div>
-<h3 id="_7">地图怎么读</h3>
+<p><strong>五个数据的含义</strong>：</p>
 <table>
 <thead>
 <tr>
-<th>颜色</th>
+<th>字段</th>
 <th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>灰色</td>
-<td>没探索到的区域</td>
+<td>x / y</td>
+<td>小海龟的坐标位置</td>
 </tr>
 <tr>
-<td>白色</td>
-<td>逛过、确认是空地的区域</td>
+<td>theta</td>
+<td>脑袋朝向（<strong>弧度</strong>，最大 ±π，不是角度）</td>
 </tr>
 <tr>
-<td>黑色</td>
-<td>障碍物/墙壁边缘</td>
+<td>linear_velocity</td>
+<td>线速度（往前走多快）</td>
+</tr>
+<tr>
+<td>angular_velocity</td>
+<td>角速度（原地转多快）</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="wsl2-gazebo">六、WSL2 跑 Gazebo 卡顿：原因与独显切换</h2>
-<h3 id="wsl2-3d">为什么 WSL2 3D 仿真性能一般</h3>
-<p>WSL2 本质是轻量虚拟机，GPU 不是直通的：
-1. OpenGL 调用要<strong>翻译</strong>成 Windows 的 Direct3D 12 再交给显卡（WSLg 转译层）
-2. 显卡加速没生效时回退 <code>llvmpipe</code>（<strong>用 CPU 算画面</strong>）→ 灾难级卡顿
-3. 窗口还要经 Wayland/XWayland 转发回 Windows 显示</p>
-<p><strong>注意</strong>：物理仿真引擎是 CPU 算的，基本没损失——<strong>慢的是画面渲染，不是仿真逻辑</strong>。</p>
-<h3 id="_8">自查：用的是不是核显</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mesa-utils
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>glxinfo<span class="w"> </span>-B
-</span></code></pre></div>
-<ul>
-<li><code>D3D12 (Intel...)</code> → 核显（默认走核显，省电策略）</li>
-<li><code>llvmpipe</code> → 软件渲染（最卡，先 <code>wsl --update</code> + <code>wsl --shutdown</code> 重启）</li>
-</ul>
-<h3 id="_9">切到独显（立竿见影）</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export MESA_D3D12_DEFAULT_ADAPTER_NAME=&quot;NVIDIA GeForce RTX 4060 Laptop GPU&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</span></code></pre></div>
-<p>变量名写<strong>设备管理器里显示的显卡全名</strong>。改完重启 GUI 程序（RViz 等），验证 <code>glxinfo -B</code> 的 renderer 变为独显。</p>
-<p>切独显后 RViz 流畅度"提升无数倍"——实测有效。</p>
-<blockquote>
-<p>注意：如果 gzserver（世界后台）在独显变量下启动卡住，可以让 gzserver 用默认设置（启动它的终端 <code>unset MESA_D3D12_DEFAULT_ADAPTER_NAME</code>），只让 RViz 用独显。</p>
-</blockquote>
-<hr />
-<h2 id="_10">七、常见坑记录</h2>
+<h2 id="vs">四、线速度 vs 角速度（开车类比）</h2>
 <table>
 <thead>
 <tr>
-<th>问题</th>
-<th>原因</th>
-<th>解决</th>
+<th>概念</th>
+<th>通俗理解</th>
+<th>正负号</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Package 'turtlebot3_gazebo' not found</code></td>
-<td>新终端没 source</td>
-<td><code>source ~/turtlebot3_ws/install/setup.bash</code>（或写进 .bashrc）</td>
+<td><strong>线速度</strong></td>
+<td>车头方向往前/往后开的速度</td>
+<td>前进 &gt; 0，后退 &lt; 0</td>
 </tr>
 <tr>
-<td><code>KeyError: 'TURTLEBOT3_MODEL'</code></td>
-<td>没设车型变量</td>
-<td><code>export TURTLEBOT3_MODEL=burger</code></td>
+<td><strong>角速度</strong></td>
+<td>原地转圈的速度</td>
+<td>逆时针（从上往下看）&gt; 0，顺时针 &lt; 0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>记忆</strong>：线速度 = 开车的快慢；角速度 = 转方向盘的快慢。</p>
+<hr />
+<h2 id="twist">五、消息接口：Twist 长什么样</h2>
+<p>想发布控制话题，先搞清楚消息类型。两种查看方式：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 方式1：从节点信息里看到类型名</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/turtlesim
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 方式2：查话题信息</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/turtle1/cmd_vel
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 方式3：看消息接口的详细定义</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>geometry_msgs/msg/Twist
+</span></code></pre></div>
+<p><code>Twist</code> 的完整结构：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>geometry_msgs/msg/Twist
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── linear（线速度）        ← 一个 Vector3 结构
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>│   ├── linear.x   （前后）
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>│   ├── linear.y   （左右，平面车用不到）
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>│   └── linear.z   （上下，平面车用不到）
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>└── angular（角速度）
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    ├── angular.x  （绕x轴翻，平面车用不到）
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    ├── angular.y  （绕y轴翻，平面车用不到）
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    └── angular.z  （绕z轴转，平面车用这个）
+</span></code></pre></div>
+<p><strong>为什么平面小海龟只用 <code>linear.x</code> 和 <code>angular.z</code>？—— ROS 坐标系</strong>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ROS 右手坐标系：
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  x 轴 → 朝前（车头方向）
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  y 轴 → 朝左
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  z 轴 → 朝上（屏幕朝向你的方向）
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>小海龟在平面上：
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  只能前后走 → 只用 linear.x
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  只能平面转 → 只能绕 z 轴转 → 只用 angular.z
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  绕 x/y 轴转 = 翻车，不存在的
+</span></code></pre></div>
+<hr />
+<h2 id="_3">六、用命令行发布话题（控制小海龟）</h2>
+<h3 id="_4">基本命令</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/turtle1/cmd_vel<span class="w"> </span>geometry_msgs/msg/Twist<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s2">&quot;{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}&quot;</span>
+</span></code></pre></div>
+<p>小海龟以 1 m/s 往前跑。</p>
+<h3 id="_5">四个参数对照</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>话题名</td>
+<td><code>/turtle1/cmd_vel</code></td>
 </tr>
 <tr>
-<td>clone 报 HTTP/2 / TLS 错误</td>
-<td>国内访问 GitHub 不稳定</td>
-<td>镜像 / <code>git config --global http.version HTTP/1.1</code></td>
+<td>消息类型</td>
+<td><code>geometry_msgs/msg/Twist</code></td>
 </tr>
 <tr>
-<td>编译报 <code>Could not find turtlebot3_msgs</code></td>
-<td>缺依赖包</td>
-<td><code>sudo apt install ros-humble-turtlebot3-msgs</code></td>
+<td>数据内容</td>
+<td><code>"{linear: {...}, angular: {...}}"</code>（YAML 格式）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yaml">YAML 格式规则（必记）</h3>
+<ol>
+<li><strong>大括号 <code>{}</code></strong> 表示一层结构：<code>linear</code> 下面还有 <code>x/y/z</code>，就要再套一层 <code>{}</code></li>
+<li><strong>冒号 <code>:</code> 后面必须有一个空格</strong>：<code>x: 1.0</code> 不能写成 <code>x:1.0</code></li>
+<li>层级关系：<code>{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}</code></li>
+</ol>
+<h3 id="_6">各种动作</h3>
+<table>
+<thead>
+<tr>
+<th>想干什么</th>
+<th>数据怎么写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前进</td>
+<td><code>linear.x = 1.0</code></td>
 </tr>
 <tr>
-<td>编译报 <code>Could not find dynamixel_sdk</code></td>
-<td>缺依赖包</td>
-<td><code>sudo apt install ros-humble-dynamixel-sdk</code></td>
+<td>后退</td>
+<td><code>linear.x = -1.0</code></td>
 </tr>
 <tr>
-<td>launch 报"找不到 launch 文件"</td>
-<td>文件名不对</td>
-<td><code>ls .../share/包名/launch/</code> 看真实文件名</td>
+<td>原地逆时针转</td>
+<td><code>angular.z = 1.0</code>（正 = 逆时针）</td>
 </tr>
 <tr>
-<td>gzserver 死 / spawn 超时</td>
-<td>残留进程 / 初始化卡住</td>
-<td><code>pkill -f gzserver</code> 后重启</td>
+<td>原地顺时针转</td>
+<td><code>angular.z = -1.0</code>（负 = 顺时针）</td>
 </tr>
 <tr>
-<td>gzclient 崩溃</td>
-<td>WSL2 下老毛病</td>
-<td>无视（画面而已，gzserver 活着就行）</td>
+<td>画圆</td>
+<td>同时给 <code>linear.x</code> 和 <code>angular.z</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-r">发布频率：-r 参数</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/turtle1/cmd_vel<span class="w"> </span>...<span class="w">   </span><span class="c1"># 每秒发布 10 次（默认 1 次）</span>
+</span></code></pre></div>
+<p><strong>重要区分</strong>：发布频率（-r）只影响"发得多频繁"，<strong>小车速度由 <code>linear.x</code> 和 <code>angular.z</code> 的值决定</strong>——频率调到 10 车不会更快，只是控制指令更连续。</p>
+<hr />
+<h2 id="_7">七、命令行工具全家（本节实操汇总）</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>干什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ros2 node list</code></td>
+<td>查看运行中的节点</td>
 </tr>
 <tr>
-<td>RViz 卡成 PPT</td>
-<td>核显渲染</td>
-<td>切独显（见第六节）</td>
+<td><code>ros2 node info &lt;节点名&gt;</code></td>
+<td>查看节点的订阅者、发布者、话题和类型</td>
 </tr>
 <tr>
-<td>RViz 一开 TF 就崩</td>
-<td>Mesa 转译层着色器 bug</td>
-<td>关掉 TF，用 LaserScan + Odometry 轨迹</td>
+<td><code>ros2 topic list</code></td>
+<td>查看所有话题</td>
 </tr>
 <tr>
-<td>不知道小车在哪</td>
-<td>没看对地方</td>
-<td>激光点云中心=小车；Odometry 轨迹末端=小车位置</td>
+<td><code>ros2 topic echo &lt;话题名&gt;</code></td>
+<td>实时输出话题数据</td>
+</tr>
+<tr>
+<td><code>ros2 topic info &lt;话题名&gt;</code></td>
+<td>查看话题类型、发布者/订阅者数量</td>
+</tr>
+<tr>
+<td><code>ros2 interface show &lt;消息接口&gt;</code></td>
+<td>查看消息接口的详细定义</td>
+</tr>
+<tr>
+<td><code>ros2 topic pub &lt;话题名&gt; &lt;类型&gt; &lt;数据&gt;</code></td>
+<td>发布话题数据</td>
+</tr>
+<tr>
+<td><code>ros2 topic pub -r &lt;频率&gt; ...</code></td>
+<td>按指定频率发布（默认 1Hz）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>思路</strong>：先 <code>node info</code> 或 <code>topic info</code> 查出"话题是什么类型"，再 <code>interface show</code> 看结构，最后 <code>topic pub</code> 发布——三步走，控制任意机器人节点。</p>
+<hr />
+<h2 id="_8">八、本节速记</h2>
+<table>
+<thead>
+<tr>
+<th>要点</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>四个关键点</td>
+<td>发布者、订阅者、话题名、话题类型</td>
+</tr>
+<tr>
+<td>对接条件</td>
+<td>话题名一致 + 消息类型一致</td>
+</tr>
+<tr>
+<td>线速度</td>
+<td>前后开的速度（linear.x）</td>
+</tr>
+<tr>
+<td>角速度</td>
+<td>原地转的速度（angular.z）</td>
+</tr>
+<tr>
+<td>ROS 坐标系</td>
+<td>右手系：x 前、y 左、z 上</td>
+</tr>
+<tr>
+<td>平面车</td>
+<td>只用 linear.x 和 angular.z</td>
+</tr>
+<tr>
+<td>YAML 格式</td>
+<td>大括号分层级，冒号后必须有空格</td>
+</tr>
+<tr>
+<td>查看接口</td>
+<td><code>ros2 interface show &lt;类型&gt;</code></td>
+</tr>
+<tr>
+<td>发布频率</td>
+<td><code>-r</code> 参数，默认 1Hz；速度由数据值决定</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="_11">八、下一步：导航</h2>
-<p>建图打通后，进入 Navigation——让小车"拿着地图自己找路"：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 终端1：启动世界</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># 终端2：启动导航</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_navigation2<span class="w"> </span>navigation2.launch.py
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># 终端3：遥控（备选，导航时也可不用）</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
-</span></code></pre></div>
-<p>在 RViz 里用顶部 "2D Goal Pose" 按钮，在地图上点一个目标点，小车自己规划路径走过去。</p>
-<hr />
-<h2 id="_12">九、自查清单</h2>
+<h2 id="_9">九、自查清单</h2>
 <ol>
-<li>仿真是什么？→ 电脑里的机器人练习场</li>
-<li>Gazebo 怎么造房间和小车？→ 读 .world/.sdf 配置文件</li>
-<li>房间图纸里 include 是什么意思？→ 引用模型库里的模型文件</li>
-<li>turtlebot3 要 clone 几个仓库？→ 两个：turtlebot3 + turtlebot3_simulations</li>
-<li>建图是什么原理？→ SLAM：边定位边建图</li>
-<li>为什么 WSL2 3D 卡？→ GPU 转译层开销；核显/软件渲染</li>
-<li>怎么切独显？→ <code>MESA_D3D12_DEFAULT_ADAPTER_NAME</code> 环境变量</li>
-<li>gzclient 崩了怎么办？→ 不用管，gzserver 活着就行</li>
+<li>话题通信四个关键点？→ 发布者、订阅者、话题名、话题类型</li>
+<li>查看话题类型？→ <code>ros2 topic info</code> / <code>ros2 node info</code></li>
+<li>查看消息结构？→ <code>ros2 interface show geometry_msgs/msg/Twist</code></li>
+<li>平面小车为什么只用 linear.x 和 angular.z？→ ROS 右手坐标系，平面车只能前后走、绕 z 转</li>
+<li>theta 是什么单位？→ 弧度（±π）</li>
+<li>发布频率和速度的关系？→ 无关！频率管发送次数，速度由数据值决定</li>
 </ol>
 
 

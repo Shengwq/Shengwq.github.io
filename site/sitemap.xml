@@ -2,78 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://shengwq.github.io/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/About/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/About/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E5%B5%8C%E5%85%A5%E5%BC%8F/BLDC%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E5%B5%8C%E5%85%A5%E5%BC%8F/FreeRTOS%E5%85%A5%E9%97%A8%E5%9F%B9%E8%AE%AD/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E4%B9%96%E5%AD%A9%E5%AD%90%E8%AF%AF%E5%8C%BA/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E5%85%B3%E4%BA%8E%E8%8A%B1%E9%92%B1/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%80%9D%E6%83%B3%E5%9E%83%E5%9C%BE/%E6%AF%8F%E6%97%A5%E8%AE%B0%E5%BD%95/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.ROS2%20%E5%AD%A6%E4%B9%A0%E6%80%BB%E8%A7%88%E5%9C%B0%E5%9B%BE/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.0ROS2%20%E5%AD%A6%E4%B9%A0%E5%BF%85%E5%A4%87%20Linux%20%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E4%B8%89%E4%B8%AA%E5%90%8D%E5%AD%97%EF%BC%9A%E5%8C%85%E5%90%8D%E3%80%81%E5%85%A5%E5%8F%A3%E5%90%8D%E3%80%81%E8%8A%82%E7%82%B9%E5%90%8D/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%A4%9A%E5%8A%9F%E8%83%BD%E5%8C%85%E4%B8%8E%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
+    </url>
+    <url>
+         <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E5%BF%85%E5%A4%87%20Python%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E4%BE%8B/</loc>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%201%EF%BC%89%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%202%EF%BC%89launch%20%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
+    </url>
+    <url>
+         <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%203%EF%BC%89%E8%AF%9D%E9%A2%98%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E4%B8%8E%20turtlesim%20%E5%AE%9E%E6%93%8D/</loc>
+         <lastmod>2026-10-04</lastmod>
+    </url>
+    <url>
+         <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88Day%204%EF%BC%89%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8E%92%E9%94%99/</loc>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E5%AE%9E%E6%88%98%EF%BC%9ATurtleBot3%20%E4%BB%BF%E7%9C%9F%E5%BB%BA%E5%9B%BE%E5%85%A5%E9%97%A8/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E9%80%9F%E6%9F%A5%E8%A1%A8/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E7%BC%96%E8%AF%91%E4%B8%8E%E7%94%9F%E6%95%88%EF%BC%9Acolcon%20build%20%E5%92%8C%20source%20%E8%AF%A6%E8%A7%A3/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
+    </url>
+    <url>
+         <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E6%8E%A5%E5%8F%A3/</loc>
+         <lastmod>2026-10-04</lastmod>
     </url>
     <url>
          <loc>https://shengwq.github.io/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ROS2%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E5%85%A8%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
-         <lastmod>2026-10-03</lastmod>
+         <lastmod>2026-10-04</lastmod>
     </url>
 </urlset>
